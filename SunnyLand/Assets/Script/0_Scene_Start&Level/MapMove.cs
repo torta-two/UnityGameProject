@@ -5,7 +5,7 @@ public class MapMove : MonoBehaviour
     private Transform map_0;
     private Transform map_1;
 
-	void Start ()
+    private void Start ()
     {
         map_0 = transform.Find("Bg (0)");
         map_1 = transform.Find("Bg (1)");
