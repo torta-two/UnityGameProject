@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839c5eda3d1f3f245bbcadd0695c6586, type: 3}
+  m_Name: UIPanelInfo_StartScene
+  m_EditorClassIdentifier: 
+  prefabList:
+  - {fileID: 1666990345021068, guid: ce34a5727dcc34742903553ad24214f3, type: 2}
+  - {fileID: 1631140827024584, guid: 745083b07a5396e47b815bf4c44b86fe, type: 2}
+  - {fileID: 1943532128521528, guid: 8b6e56d09fc171245b24beaff027745b, type: 2}
+  - {fileID: 0}
+  typeList: 00000000010000000200000003000000
