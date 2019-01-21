@@ -100,19 +100,22 @@ public class UIManager
     /// 预先把需要获取实例的面板实例化
     /// </summary>
     /// <param name="panels">需要获取实例的面板(不包括mainPanel)</param>
-    /// <param name="mainPanels">实例化且无需出栈的面板(一般为主UI面板)</param>
-    public void InitializePanel(UIPanelInfo.PanelType mainPanels, UIPanelInfo.PanelType[] panels)
+    /// <param name="mainPanel">实例化且无需出栈的面板(一般为主UI面板)</param>
+    public void InitializePanel(UIPanelInfo.PanelType mainPanel, UIPanelInfo.PanelType[] panels)
     {
         if (instPanelDict == null)
             instPanelDict = new Dictionary<UIPanelInfo.PanelType, BasePanel>();
 
-        PushPanel(mainPanels);
+        BasePanel instMainPanel = InstantiatePanel(mainPanel);
+        instPanelDict.Add(mainPanel, instMainPanel);
 
         foreach (var item in panels)
         {
-            if(item != mainPanels)
-            {
-                PushPanel(item);
+            BasePanel instPanel = InstantiatePanel(item);
+            instPanelDict.Add(item, instPanel);
+
+            if (item != mainPanel)
+            {                
                 PopPanel();
             }            
         }

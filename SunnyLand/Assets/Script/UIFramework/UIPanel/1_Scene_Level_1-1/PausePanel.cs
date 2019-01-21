@@ -12,6 +12,11 @@ public class PausePanel : BasePanel
         ctrl = FindObjectOfType<Ctrl>();
     }
 
+    public override void OnEnter()
+    {       
+        base.OnEnter();
+    }
+
     public void OnClickResumeButton()
     {
         Time.timeScale = 1;

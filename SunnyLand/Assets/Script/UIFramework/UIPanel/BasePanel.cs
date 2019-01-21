@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class BasePanel : MonoBehaviour
 {
-    private CanvasGroup canvasGroup;
-    private Button btn;
+    protected CanvasGroup canvasGroup;
+    protected Button btn;
     protected UIManager uiManager;
 
-    private void Awake()
+    private void Start()
     {
         btn = FindCloseButton("CloseButton");
         canvasGroup = GetComponent<CanvasGroup>();
@@ -25,8 +26,6 @@ public class BasePanel : MonoBehaviour
         }
     }
 
- 
-
     private Button FindCloseButton(string childName)
     {
         Button closeButton = null;
@@ -38,27 +37,30 @@ public class BasePanel : MonoBehaviour
         return closeButton;
     }
 
-    public void OnEnter()
+    public virtual void OnEnter()
     {
-        canvasGroup.alpha = 1;
+        if (canvasGroup == null)
+            Debug.Log("null");
+
         canvasGroup.blocksRaycasts = true;
+        canvasGroup.DOFade(1, 0.2f);       
     }
 
-    public void OnPause()
+    public virtual void OnPause()
     {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = false;
     }
 
-    public void OnResume()
+    public virtual void OnResume()
     {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
     }
 
-    public void OnExit()
+    public virtual void OnExit()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
         canvasGroup.blocksRaycasts = false;
     }       
 }

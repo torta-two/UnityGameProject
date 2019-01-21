@@ -11,6 +11,6 @@ public class LevelSelectPanel : BasePanel
 
     public void OnClickTaskButton()
     {
-
+        uiManager.PushPanel(UIPanelInfo.PanelType.TaskPanel);
     }
 }

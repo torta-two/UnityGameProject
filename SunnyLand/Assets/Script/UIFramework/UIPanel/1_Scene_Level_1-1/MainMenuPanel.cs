@@ -10,6 +10,5 @@ public class MainMenuPanel : BasePanel
     public void OnClickPauseButton()
     {
         uiManager.PushPanel(UIPanelInfo.PanelType.PausePanel);
-        Time.timeScale = 0;
     }
 }
