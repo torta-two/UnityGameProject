@@ -903,6 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ca152d6223ca749a28b2daca1b50ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  taskGroup: {fileID: 224192197066328380}
 --- !u!114 &114912604983847514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1494,5 +1495,5 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

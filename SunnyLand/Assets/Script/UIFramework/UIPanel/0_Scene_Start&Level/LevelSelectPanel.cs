@@ -6,11 +6,11 @@ public class LevelSelectPanel : BasePanel
 {
     public void OnClickStoreButton()
     {
-        uiManager.PushPanel(UIPanelInfo.PanelType.StorePanel);
+        UIManager.PushPanel(UIPanelInfo.PanelType.StorePanel);
     }
 
     public void OnClickTaskButton()
     {
-        uiManager.PushPanel(UIPanelInfo.PanelType.TaskPanel);
+        UIManager.PushPanel(UIPanelInfo.PanelType.TaskPanel);
     }
 }

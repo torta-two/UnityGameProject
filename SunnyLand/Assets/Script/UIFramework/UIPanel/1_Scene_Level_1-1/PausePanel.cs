@@ -5,13 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PausePanel : BasePanel
 {
-    private Ctrl ctrl;
-
-    private void Start()
-    {
-        ctrl = FindObjectOfType<Ctrl>();
-    }
-
     public override void OnEnter()
     {       
         base.OnEnter();

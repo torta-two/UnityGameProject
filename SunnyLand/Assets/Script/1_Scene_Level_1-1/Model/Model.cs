@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Model : MonoBehaviour
-{    
+{
     private Ctrl ctrl;
-    private int thisLevel = 0;  
+    private int thisLevel = 0;
 
     private void Awake()
     {
         ctrl = GameObject.FindWithTag("Ctrl").GetComponent<Ctrl>();
 
-        thisLevel = ctrl.gameRecordInfo.thisLevel;     
+        thisLevel = ctrl.gameRecordInfo.thisLevel;
     }
 
     private void Update()
@@ -31,20 +31,24 @@ public class Model : MonoBehaviour
         }
     }
 
-    public void GetScore(string tag)
+    public void OnEnemyDead(string enemyTag)
     {
         switch (tag)
         {
-            case "CommonReward":
-                {
-                    ctrl.score += 10;
-                }
-                break;
-            case "SpecialReward": ctrl.score += 100; break;
-            case "Enemy": ctrl.score += 50; break;
+            case "CommonEnemy": ctrl.score += 50;break;
+            case "SpecialEnemy": ctrl.score += 100; break;
             default: break;
         }
     }
 
+    public void OnGetCoins(string coinTag)
+    {
+        switch (tag)
+        {
+            case "CommonCoin": ctrl.score += 20; break;
+            case "SpecialCoin": ctrl.score += 100; break;
+            default: break;
+        }
+    }
 
 }

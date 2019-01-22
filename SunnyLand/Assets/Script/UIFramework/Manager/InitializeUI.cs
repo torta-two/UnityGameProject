@@ -5,18 +5,25 @@ using UnityEngine;
 public class InitializeUI : MonoBehaviour
 {
     public UIPanelInfo.PanelType mainPanel;
-    public UIPanelInfo.PanelType[] panels;
+    public UIPanelInfo panelInfo;   
 
-    public UIPanelInfo panelInfo;
-
+    private UIManager _uiManager;
     [HideInInspector]
-    public UIManager uiRoot;
-    
+    public UIManager UIManager
+    {
+        get
+        {
+            if (_uiManager == null)
+            {
+                _uiManager = new UIManager();               
+            }
+
+            return _uiManager;
+        }
+    }
 
     private void Awake()
     {
-        uiRoot = new UIManager();
-        uiRoot.InitializePanel(mainPanel,panels);        
+        UIManager.PushPanel(mainPanel);
     }
-
 }

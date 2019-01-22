@@ -314,9 +314,9 @@
     <Compile Include="Assets\Script\0_Scene_Start&amp;Level\MapMove.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\AudioManager.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Ctrl.cs" />
-    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Enemy\EnemyCheckPlayerAttack.cs" />
-    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Enemy\EnemyCheckPlayerHurt.cs" />
-    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Enemy\EnemyMove.cs" />
+    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Enemy\Enemy_CheckDeadEnemy.cs" />
+    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Enemy\Enemy_CheckHurtPlayer.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerClimbState.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerControl.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerCrouchState.cs" />
@@ -327,8 +327,8 @@
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\StateMachine\State.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\GameManager.cs" />
+    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Prop\Coin.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Prop\EndingCheck.cs" />
-    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Prop\RewardCheck.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Model\Model.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\View\CameraFollow.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\View\View.cs" />

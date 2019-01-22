@@ -7,8 +7,9 @@ public class StorePanel : BasePanel
 {
     RectTransform rectTransform;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         rectTransform = GetComponent<RectTransform>();
     }
 

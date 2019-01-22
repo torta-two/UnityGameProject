@@ -302,7 +302,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainPanel: 1
-  panels: 0200000003000000
   panelInfo: {fileID: 11400000, guid: 9b7695bf6cc61d04986df858a65ce1a7, type: 2}
 --- !u!82 &888637972
 AudioSource:

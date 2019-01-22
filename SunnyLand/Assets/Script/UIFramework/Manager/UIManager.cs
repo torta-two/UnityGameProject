@@ -34,22 +34,22 @@ public class UIManager
 
     public void PushPanel(UIPanelInfo.PanelType type)
     {
+        if (instPanelDict == null)
+            instPanelDict = new Dictionary<UIPanelInfo.PanelType, BasePanel>();
+
         if (panelStack == null)
             panelStack = new Stack<BasePanel>();
 
         if (panelStack.Count > 0)
             panelStack.Peek().OnPause();
 
-        BasePanel instPanel = instPanelDict.TryGetValue(type);
+        BasePanel panel = instPanelDict.TryGetValue(type);
 
-        if (instPanel == null)
-        {
-            instPanel = InstantiatePanel(type);
-            instPanelDict.Add(type, instPanel);
-        }
+        if (panel == null)
+            panel = InstantiatePanel(type);
 
-        panelStack.Push(instPanel);
-        instPanel.OnEnter();
+        panelStack.Push(panel);
+        panel.OnEnter();
     }
 
     public void PopPanel()
@@ -71,19 +71,23 @@ public class UIManager
     private BasePanel InstantiatePanel(UIPanelInfo.PanelType type)
     {
         GameObject prefab = UIRoot.panelInfo.panelDict.TryGetValue(type);
-
         if (prefab == null)
             throw new Exception("Can't find the prefab of " + type.ToString());
 
         BasePanel instPanel = UnityEngine.Object.Instantiate(prefab).GetComponent<BasePanel>();
         instPanel.gameObject.name = prefab.name;
-
         instPanel.transform.SetParent(CanvasTransform, false);
+        instPanelDict.Add(type, instPanel);
 
         return instPanel;
     }
 
-    public bool CheckUIPanelInScene(UIPanelInfo.PanelType type)
+    //public void Initialize(UIPanelInfo.PanelType mainPanel)
+    //{
+    //    PushPanel(mainPanel);
+    //}
+
+    public bool CheckPanelExist(UIPanelInfo.PanelType type)
     {
         bool uiPanelInScene = false;
 
@@ -94,31 +98,4 @@ public class UIManager
 
         return uiPanelInScene;
     }
-
-
-    /// <summary>
-    /// 预先把需要获取实例的面板实例化
-    /// </summary>
-    /// <param name="panels">需要获取实例的面板(不包括mainPanel)</param>
-    /// <param name="mainPanel">实例化且无需出栈的面板(一般为主UI面板)</param>
-    public void InitializePanel(UIPanelInfo.PanelType mainPanel, UIPanelInfo.PanelType[] panels)
-    {
-        if (instPanelDict == null)
-            instPanelDict = new Dictionary<UIPanelInfo.PanelType, BasePanel>();
-
-        BasePanel instMainPanel = InstantiatePanel(mainPanel);
-        instPanelDict.Add(mainPanel, instMainPanel);
-
-        foreach (var item in panels)
-        {
-            BasePanel instPanel = InstantiatePanel(item);
-            instPanelDict.Add(item, instPanel);
-
-            if (item != mainPanel)
-            {                
-                PopPanel();
-            }            
-        }
-    }
-
 }
