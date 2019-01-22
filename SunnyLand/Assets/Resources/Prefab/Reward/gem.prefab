@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 82013304616857426}
   m_Layer: 0
   m_Name: gem
-  m_TagString: CommonReward
+  m_TagString: CommonCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effe8878855a8ee40853b4b481087a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkReward: 0
+  checkCoin: 0
 --- !u!212 &212067846235724248
 SpriteRenderer:
   m_ObjectHideFlags: 1

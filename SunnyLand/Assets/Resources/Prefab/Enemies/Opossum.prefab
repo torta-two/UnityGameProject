@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 82490059303450766}
   m_Layer: 0
   m_Name: Opossum
-  m_TagString: Enemy
+  m_TagString: CommonEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   patrolRadius: 5
+  audioSource: {fileID: 0}
 --- !u!114 &114569623961873086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab7ec0ea6910574bb0f3330763e4d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkPlayerAttack: 0
+  checkDeadEnemy: 0
 --- !u!114 &114635045704909236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b5fd1b34fb0b3438cc8d428055aea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkPlayerHurt: 0
+  checkHurtPlayer: 0
 --- !u!212 &212132226606156540
 SpriteRenderer:
   m_ObjectHideFlags: 1

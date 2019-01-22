@@ -10,7 +10,6 @@ public class TaskPanel : BasePanel
     {
         base.Awake();
         rectTransform = GetComponent<RectTransform>();
-        //taskGroup = transform.Find("TaskGroup").GetComponent<rec>
     }
 
     public override void OnEnter()

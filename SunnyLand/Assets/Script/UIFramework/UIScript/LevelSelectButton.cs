@@ -76,7 +76,7 @@ public class LevelSelectButton : MonoBehaviour
 
     public void OnLevelSelectButtonClick()
     {
-        gameRecordInfo.thisLevel = thislevel;
+        gameRecordInfo.levelIndex = thislevel;
 
         SceneManager.LoadScene(thislevel + 1);       
     }

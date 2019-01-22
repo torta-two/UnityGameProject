@@ -4,7 +4,7 @@ public class SystemSettingPanel : BasePanel
 {
     public void OnClickExitButton()
     {
-        ctrl.gameRecordInfo.Save();
+        ctrl.model.gameRecord.Save();
 
         Application.Quit();
     }

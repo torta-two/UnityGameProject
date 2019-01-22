@@ -1,54 +1,89 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Model : MonoBehaviour
 {
-    private Ctrl ctrl;
-    private int thisLevel = 0;
+    public GameRecordInfo gameRecord;
+    public event Action<int> OnScoreChange;
+    public event Action<int> OnMaxScoreChange;
+
+    private int levelIndex = 0;
+    private int score = 0;
+    private int maxScore = 0;
+    private int specialReward = 0;
 
     private void Awake()
     {
-        ctrl = GameObject.FindWithTag("Ctrl").GetComponent<Ctrl>();
+        levelIndex = gameRecord.levelIndex;
 
-        thisLevel = ctrl.gameRecordInfo.thisLevel;
+        LoadScore();  
     }
 
     private void Update()
     {
-        if (thisLevel < ctrl.gameRecordInfo.beingPassedLevel)
-        {
-            ctrl.maxScore = ctrl.gameRecordInfo.levelMaxScore[thisLevel - 1];
-            if (ctrl.gameRecordInfo.levelMaxScore[thisLevel - 1] < ctrl.score)
-            {
-                ctrl.gameRecordInfo.levelMaxScore[thisLevel - 1] = ctrl.score;
-            }
-        }
+        if (maxScore < score)
+            maxScore = score;
 
-        if (ctrl.maxScore < ctrl.score)
+        if (OnMaxScoreChange != null)
+            OnMaxScoreChange(maxScore);
+
+        if (OnScoreChange != null)
+            OnScoreChange(score);
+    }
+
+    private void LoadScore()
+    {
+        if (levelIndex >= gameRecord.beingPassedLevel)
         {
-            ctrl.maxScore = ctrl.score;
+            if (gameRecord.maxScores.Count < levelIndex)
+                gameRecord.maxScores.Add(maxScore);
+            if (gameRecord.specialRewards.Count < levelIndex)
+                gameRecord.specialRewards.Add(specialReward);
         }
     }
 
-    public void OnEnemyDead(string enemyTag)
+    public void GetScore(string tag)
     {
         switch (tag)
         {
-            case "CommonEnemy": ctrl.score += 50;break;
-            case "SpecialEnemy": ctrl.score += 100; break;
+            case "CommonCoin":
+                {
+                    score += 20;
+                }
+                break;
+            case "SpecialCoin":
+                {
+                    score += 100;
+                    specialReward++;
+                }
+                break;
+            case "CommonEnemy":
+                {
+                    score += 50;
+                }
+                break;
+            case "SpecialEnemy":
+                {
+                    score += 100;
+                }
+                break;
             default: break;
         }
     }
 
-    public void OnGetCoins(string coinTag)
+    public void SaveScore()
     {
-        switch (tag)
-        {
-            case "CommonCoin": ctrl.score += 20; break;
-            case "SpecialCoin": ctrl.score += 100; break;
-            default: break;
-        }
-    }
+        if(gameRecord.maxScores[levelIndex - 1] < maxScore)
+        gameRecord.maxScores[levelIndex - 1] = maxScore;
 
+        if (gameRecord.specialRewards[levelIndex - 1] < specialReward)
+            gameRecord.specialRewards[levelIndex - 1] = specialReward;
+
+        if(levelIndex == gameRecord.beingPassedLevel)
+            gameRecord.beingPassedLevel++;
+
+        gameRecord.Save();
+    }   
 }

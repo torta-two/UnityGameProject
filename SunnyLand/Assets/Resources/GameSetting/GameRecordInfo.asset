@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e39bb51a04de3143b23b356ce3864e2, type: 3}
   m_Name: GameRecordInfo
   m_EditorClassIdentifier: 
-  beingPassedLevel: 3
-  thisLevel: 1
-  levelSpecialReward: 0300000002000000
-  levelMaxScore: f401000058020000
+  beingPassedLevel: 2
+  levelIndex: 1
+  specialRewards: 02000000
+  maxScores: cc010000

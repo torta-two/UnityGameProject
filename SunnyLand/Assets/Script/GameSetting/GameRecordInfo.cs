@@ -7,16 +7,16 @@ using UnityEngine;
 public class GameRecordInfo : ScriptableObject
 {
     public int beingPassedLevel = 1;
-    public int thisLevel = 1;
-    public List<int> levelSpecialReward = new List<int>();
-    public List<int> levelMaxScore = new List<int>();
+    public int levelIndex = 1;
+    public List<int> specialRewards = new List<int>();
+    public List<int> maxScores = new List<int>();
 
     public void OnEnable()
     {
-        for (int i = 0; i < levelMaxScore.Count; i++)
+        for (int i = 0; i < maxScores.Count; i++)
         {
-            if (PlayerPrefs.HasKey("levelMaxScore" + (i + 1).ToString()))
-                levelMaxScore[i] = PlayerPrefs.GetInt("levelMaxScore" + (i + 1).ToString());            
+            if (PlayerPrefs.HasKey("maxScore" + (i + 1).ToString()))
+                maxScores[i] = PlayerPrefs.GetInt("maxScore" + (i + 1).ToString());            
         }
     }
 
@@ -27,20 +27,20 @@ public class GameRecordInfo : ScriptableObject
 
     public void Save()
     {
-        for (int i = 0; i < levelMaxScore.Count; i++)
+        for (int i = 0; i < maxScores.Count; i++)
         {
-            PlayerPrefs.SetInt("levelMaxScore" + (i + 1).ToString(), levelMaxScore[i]);
+            PlayerPrefs.SetInt("maxScore" + (i + 1).ToString(), maxScores[i]);
         }
         PlayerPrefs.Save();
     }
 
     public void Clear()
     {
-        for (int i = 0; i < levelMaxScore.Count; i++)
+        for (int i = 0; i < maxScores.Count; i++)
         {
-            levelMaxScore[i] = 0;
+            maxScores[i] = 0;
 
-            PlayerPrefs.SetInt("levelMaxScore" + (i + 1).ToString(), levelMaxScore[i]);
+            PlayerPrefs.SetInt("maxScore" + (i + 1).ToString(), maxScores[i]);
         }
         PlayerPrefs.Save();
     }

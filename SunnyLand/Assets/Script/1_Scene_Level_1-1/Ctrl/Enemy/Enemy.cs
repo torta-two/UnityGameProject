@@ -16,8 +16,8 @@ public class Enemy : MonoBehaviour
 
     private bool isFacingRight = false;
     private Vector2 startPoint;
-    private Enemy_CheckDeadEnemy checkPlayerAttack;
-    private Enemy_CheckHurtPlayer checkPlayerHurt;
+    private Enemy_CheckDeadEnemy checkDeadEnemy;
+    private Enemy_CheckHurtPlayer checkHurtPlayer;
 
     
     
@@ -26,11 +26,11 @@ public class Enemy : MonoBehaviour
     
     private void Awake()
     {        
-        checkPlayerAttack = GetComponentInChildren<Enemy_CheckDeadEnemy>();
-        checkPlayerHurt = GetComponentInChildren<Enemy_CheckHurtPlayer>();
+        checkDeadEnemy = GetComponentInChildren<Enemy_CheckDeadEnemy>();
+        checkHurtPlayer = GetComponentInChildren<Enemy_CheckHurtPlayer>();
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        ctrl = FindObjectOfType<Ctrl>();
+        ctrl = FindObjectOfType<Ctrl>();       
 
         startPoint = transform.position;
         patrolRadius += Random.Range(0, 2);
@@ -95,7 +95,7 @@ public class Enemy : MonoBehaviour
     {
         Enemy deadEnemy = null;
 
-        if (checkPlayerAttack.checkDeadEnemy)
+        if (checkDeadEnemy.checkDeadEnemy)
         {
             deadEnemy = this;
         }
@@ -103,40 +103,46 @@ public class Enemy : MonoBehaviour
         return deadEnemy;
     }
 
-    public void CheckPlayBeAttacked(PlayerControl player)
+    public bool CheckPlayBeHurt(PlayerControl player)
     {
+        bool playerBeHurt = false;
+
         if (player.isPlayHurtAnim)
         {
-            checkPlayerHurt.checkHurtPlayer = false;
+            checkHurtPlayer.checkHurtPlayer = false;
         }
 
-        if (!player.isPlayHurtAnim && checkPlayerHurt.checkHurtPlayer)
+        if (!player.isPlayHurtAnim && checkHurtPlayer.checkHurtPlayer)
         {
             ctrl.audioManager.Play(ctrl.audioManager.hurt, audioSource);
             player.isHurt = true;
-            checkPlayerHurt.checkHurtPlayer = false;
+            checkHurtPlayer.checkHurtPlayer = false;
+
+            playerBeHurt = true;
         }
+
+        return playerBeHurt;
     }
 
     public Enemy CheckDeadEnemyAndPlayerHurt(PlayerControl player)
     {
         Enemy deadEnemy = null;
 
-        if (checkPlayerAttack.checkDeadEnemy)
+        if (checkDeadEnemy.checkDeadEnemy)
         {
             deadEnemy = this;
         }
 
         if (player.isPlayHurtAnim)
         {
-            checkPlayerHurt.checkHurtPlayer = false;
+            checkHurtPlayer.checkHurtPlayer = false;
         }
 
-        if (!player.isPlayHurtAnim && checkPlayerHurt.checkHurtPlayer)
+        if (!player.isPlayHurtAnim && checkHurtPlayer.checkHurtPlayer)
         {
             ctrl.audioManager.Play(ctrl.audioManager.hurt, audioSource);
             player.isHurt = true;
-            checkPlayerHurt.checkHurtPlayer = false;
+            checkHurtPlayer.checkHurtPlayer = false;
         }
 
         return deadEnemy;
@@ -144,8 +150,8 @@ public class Enemy : MonoBehaviour
 
     public void OnEnemyDead()
     {
-        checkPlayerAttack.gameObject.SetActive(false);
-        checkPlayerHurt.gameObject.SetActive(false);
+        checkDeadEnemy.gameObject.SetActive(false);
+        checkHurtPlayer.gameObject.SetActive(false);
 
         ctrl.audioManager.Play(ctrl.audioManager.attack, audioSource);
         anim.SetBool("isDead", true);

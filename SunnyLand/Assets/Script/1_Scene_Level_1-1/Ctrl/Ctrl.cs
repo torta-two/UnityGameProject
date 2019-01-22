@@ -6,21 +6,15 @@ using UnityEngine.EventSystems;
 
 public class Ctrl : MonoBehaviour
 {
-    public GameRecordInfo gameRecordInfo;
+    [HideInInspector]
     public float volume = 1;
 
-    public int score = 0;
-    public int maxScore = 0;
-    public int specialRewards = 0;
-
+    [HideInInspector]
     public int loseHearts = 0;
 
     [HideInInspector]
     public PlayerControl player;
-
-    private List<Enemy> enemies = new List<Enemy>();
-    private List<Coin> coins = new List<Coin>();
-
+    
     [HideInInspector]
     public Model model;
 
@@ -28,13 +22,19 @@ public class Ctrl : MonoBehaviour
     public AudioManager audioManager;
 
     [HideInInspector]
-    public UIManager UIRoot;
+    public UIManager UIManager;
+
+    [HideInInspector]
+    public event Action OnPlayerBeHurt;
+
+    private List<Enemy> enemies = new List<Enemy>();
+    private List<Coin> coins = new List<Coin>();
 
     private void Awake()
     {
         audioManager = GetComponent<AudioManager>();       
         player = GetComponentInChildren<PlayerControl>();
-        UIRoot = GetComponent<InitializeUI>().UIManager;
+        UIManager = GetComponent<InitializeUI>().UIManager;
 
         model = FindObjectOfType<Model>();
 
@@ -59,11 +59,12 @@ public class Ctrl : MonoBehaviour
 
         if (player.isEnding)
         {
-            if (!UIRoot.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
+            if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
             {
                 player.GetComponent<PlayerControl>().OnPassLevel();
+                model.SaveScore();
 
-                UIRoot.PushPanel(UIPanelInfo.PanelType.EndingPanel);
+                UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
                 audioManager.Play(audioManager.passLevel, player.audioSource);
             }
         }
@@ -74,7 +75,11 @@ public class Ctrl : MonoBehaviour
         {
             deadEnemy = enemy.CheckDeadEnemy();
 
-            enemy.CheckPlayBeAttacked(player);
+            if(enemy.CheckPlayBeHurt(player))
+            {
+                if(OnPlayerBeHurt != null)
+                    OnPlayerBeHurt();
+            }
 
             if (deadEnemy != null)
             {                
@@ -84,8 +89,9 @@ public class Ctrl : MonoBehaviour
 
         if (deadEnemy != null)
         {
-            model.OnEnemyDead(deadEnemy.tag);
+            model.GetScore(deadEnemy.tag);
             deadEnemy.OnEnemyDead();
+
             enemies.Remove(deadEnemy);
         }
 
@@ -98,19 +104,22 @@ public class Ctrl : MonoBehaviour
         {
             if (coin.checkCoin)
             {
-                coin.OnGetCoins();
                 deadReward = coin;
-                model.OnGetCoins(coin.tag);
                 if (deadReward != null)
-                {
-                    audioManager.Play(audioManager.commonReward, deadReward.GetComponent<AudioSource>());
+                {                   
                     break;
                 }
             }
         }
 
         if (deadReward != null)
+        {
+            audioManager.Play(audioManager.commonReward, deadReward.GetComponent<AudioSource>());
+            model.GetScore(deadReward.tag);
+            deadReward.OnGetCoins();
+
             coins.Remove(deadReward);
+        }
 
         #endregion
 

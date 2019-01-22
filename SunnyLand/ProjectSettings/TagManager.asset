@@ -12,9 +12,11 @@ TagManager:
   - Model
   - View
   - Ctrl
-  - CommonReward
-  - SpecialReward
   - Ending
+  - CommonCoin
+  - SpecialCoin
+  - CommonEnemy
+  - SpecialEnemy
   layers:
   - Default
   - TransparentFX

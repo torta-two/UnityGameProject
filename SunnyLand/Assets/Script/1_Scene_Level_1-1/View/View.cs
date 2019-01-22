@@ -31,7 +31,7 @@ public class View : MonoBehaviour
         //        allHearts[i].gameObject.SetActive(false);
         //    }
         //}       
-       
+
         //scrollbar = transform.Find("Canvas/SystemSettingPanel/Volume/Slider").GetComponent<Slider>();
     }
 

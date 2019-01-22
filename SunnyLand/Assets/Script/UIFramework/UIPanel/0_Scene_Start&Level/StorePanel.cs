@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class StorePanel : BasePanel
 {
-    RectTransform rectTransform;
+    private RectTransform rectTransform;
 
     protected override void Awake()
     {
