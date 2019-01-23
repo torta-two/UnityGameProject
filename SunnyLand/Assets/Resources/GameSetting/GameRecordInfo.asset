@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beingPassedLevel: 1
   levelIndex: 1
-  specialRewards: 
+  specialCoins: 
   maxScores: 

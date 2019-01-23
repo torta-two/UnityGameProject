@@ -345,6 +345,7 @@
     <Compile Include="Assets\Script\UIFramework\UIPanel\0_Scene_Start&amp;Level\TaskPanel.cs" />
     <Compile Include="Assets\Script\UIFramework\UIPanel\1_Scene_Level_1-1\BalancePanel.cs" />
     <Compile Include="Assets\Script\UIFramework\UIPanel\1_Scene_Level_1-1\EndingPanel.cs" />
+    <Compile Include="Assets\Script\UIFramework\UIPanel\1_Scene_Level_1-1\ExitWarningPanel.cs" />
     <Compile Include="Assets\Script\UIFramework\UIPanel\1_Scene_Level_1-1\MainMenuPanel.cs" />
     <Compile Include="Assets\Script\UIFramework\UIPanel\1_Scene_Level_1-1\PausePanel.cs" />
     <Compile Include="Assets\Script\UIFramework\UIPanel\1_Scene_Level_1-1\SystemSettingPanel.cs" />

@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 341149055}
   - component: {fileID: 341149056}
   - component: {fileID: 341149057}
+  - component: {fileID: 341149054}
   m_Layer: 0
   m_Name: Ctrl
   m_TagString: Ctrl
@@ -687,6 +688,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &341149054
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 341149052}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &341149055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +784,7 @@ MonoBehaviour:
   player: {fileID: 0}
   model: {fileID: 0}
   audioManager: {fileID: 0}
+  source: {fileID: 0}
 --- !u!114 &341149056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,9 +802,11 @@ MonoBehaviour:
   attack: {fileID: 8300000, guid: 24512ee4aa7451745974b27c89028038, type: 3}
   hurt: {fileID: 8300000, guid: 07567da68f13c214e85d48c4b34b6f66, type: 3}
   dead: {fileID: 0}
-  commonReward: {fileID: 8300000, guid: a09d61446ebc31548a51312b20737125, type: 3}
-  specialReward: {fileID: 8300000, guid: a09d61446ebc31548a51312b20737125, type: 3}
+  commonCoin: {fileID: 8300000, guid: a09d61446ebc31548a51312b20737125, type: 3}
+  specialCoin: {fileID: 8300000, guid: a09d61446ebc31548a51312b20737125, type: 3}
   passLevel: {fileID: 8300000, guid: 4de4223bc63281046a8063aa4d62c011, type: 3}
+  GetStar: {fileID: 8300000, guid: fb87d002b125fab4cbb1fefc8e142c1e, type: 3}
+  GetScore: {fileID: 0}
 --- !u!114 &341149057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2051,7 +2135,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4904698700538506, guid: 703e4695adc449240b14bfabfcef36b0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 38.79
+      value: 34.95
       objectReference: {fileID: 0}
     - target: {fileID: 4904698700538506, guid: 703e4695adc449240b14bfabfcef36b0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2336,6 +2420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameRecord: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
+  levelIndex: 0
 --- !u!4 &895544881
 Transform:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ SceneListBegin?
 Assets/Scene/0_Scene_Start.unity
 Assets/Scene/1_Scene_SelectLevel.unity
 Assets/Scene/2_Scene_Level_1-1.unity
-Assets/Scene/2_Scene_Level_1-2.unity
+Assets/Scene/3_Scene_Level_1-2.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 dbc29a6f2739d277c10da432d73adb6d UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -19,7 +19,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.StorePanel
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EndingPanel
-0daf02cf91e75f217b756d8b009cc953 Assembly-CSharp.dll:.GameRecordInfo
+871ae8e1c7b022be7d20b6d4bd6db361 Assembly-CSharp.dll:.GameRecordInfo
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LevelSelectPanel
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -111,12 +111,13 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-3a0caa3653fd38bcd6fe1a4ffcfa6f0d Assembly-CSharp.dll:.Model
+b1a6b4b0cf97b9df9089aaff1b1371b3 Assembly-CSharp.dll:.Model
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 53d32cf9520e255decc6bf9d0a614626 Assembly-CSharp.dll:.PlayerControl
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SystemSettingPanel
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ExitWarningPanel
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -153,7 +154,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-75e6fb9c8da70648c28db19b3f402a4f Assembly-CSharp.dll:.Ctrl
+dd506c0b985e198aa9233c7da6edb08f Assembly-CSharp.dll:.Ctrl
 875c7abb807d3f1970e173fc08b38d7b Assembly-CSharp.dll:.LevelSelectDrag
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
@@ -163,7 +164,7 @@ e7ce70e633bb3d54ee91f745b0a37afe Assembly-CSharp.dll:.UIPanelInfo
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GameManager
 8d0996510f6056166f8f3c8b2727eca1 Assembly-CSharp.dll:.Enemy_CheckHurtPlayer
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PausePanel
+ceafff0b3596f28d5d631c37e92ca3ef Assembly-CSharp.dll:.PausePanel
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -174,6 +175,6 @@ bcde5a4f38b349c4315d84b6a707c422 DOTweenPro.dll:DG.Tweening.DOTweenPath
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 119b13b0e6dcd2f723a04c376b942337 Assembly-CSharp.dll:.TaskPanel
 7a04a9a20828e2f44cd0ac904ab345ed Assembly-CSharp.dll:DG.Tweening.DOTweenAnimation
-5d53a4a4cdff549a77621c1303fe01e2 Assembly-CSharp.dll:.AudioManager
+295e69056e70a28239d20809eae5c4cb Assembly-CSharp.dll:.AudioManager
 73639bed08fb15b7837016bc407f1a34 Assembly-CSharp.dll:.Enemy_CheckDeadEnemy
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.View

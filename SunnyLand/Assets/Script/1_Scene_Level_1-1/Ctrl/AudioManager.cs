@@ -11,9 +11,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip attack;
     public AudioClip hurt;
     public AudioClip dead;
-    public AudioClip commonReward;
-    public AudioClip specialReward;
+    public AudioClip commonCoin;
+    public AudioClip specialCoin;
     public AudioClip passLevel;
+    public AudioClip GetStar;
+    public AudioClip GetScore;
 
     private float volume = 1;
     private float firstVolume;

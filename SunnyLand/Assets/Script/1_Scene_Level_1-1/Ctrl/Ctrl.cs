@@ -22,9 +22,11 @@ public class Ctrl : MonoBehaviour
     public AudioManager audioManager;
 
     [HideInInspector]
-    public UIManager UIManager;
+    public AudioSource source;
 
     [HideInInspector]
+    public UIManager UIManager;
+
     public event Action OnPlayerBeHurt;
 
     private List<Enemy> enemies = new List<Enemy>();
@@ -32,7 +34,8 @@ public class Ctrl : MonoBehaviour
 
     private void Awake()
     {
-        audioManager = GetComponent<AudioManager>();       
+        audioManager = GetComponent<AudioManager>();
+        source = GetComponent<AudioSource>();
         player = GetComponentInChildren<PlayerControl>();
         UIManager = GetComponent<InitializeUI>().UIManager;
 
@@ -65,7 +68,7 @@ public class Ctrl : MonoBehaviour
                 UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
                 UIManager.PushPanel(UIPanelInfo.PanelType.BalancePanel);
                 model.SaveScore();
-               
+
                 audioManager.Play(audioManager.passLevel, player.audioSource);              
             }
         }
@@ -115,7 +118,7 @@ public class Ctrl : MonoBehaviour
 
         if (deadReward != null)
         {
-            audioManager.Play(audioManager.commonReward, deadReward.GetComponent<AudioSource>());
+            audioManager.Play(audioManager.commonCoin, deadReward.GetComponent<AudioSource>());
             model.GetScore(deadReward.tag);
             deadReward.OnGetCoins();
 
@@ -125,4 +128,5 @@ public class Ctrl : MonoBehaviour
         #endregion
 
     }
+
 }

@@ -10,7 +10,8 @@ public class Model : MonoBehaviour
     public event Action<int> OnMaxScoreChange;
     public event Action<int, int> OnBalance;
 
-    private int levelIndex = 0;
+    [HideInInspector]
+    public int levelIndex = 0;
     private int score = 0;
     private int maxScore = 0;
     private int specialCoin = 0;
@@ -36,12 +37,14 @@ public class Model : MonoBehaviour
 
     private void LoadScore()
     {
+        gameRecord.Load();
+
         if (levelIndex >= gameRecord.beingPassedLevel)
         {
             if (gameRecord.maxScores.Count < levelIndex)
                 gameRecord.maxScores.Add(maxScore);
-            if (gameRecord.specialRewards.Count < levelIndex)
-                gameRecord.specialRewards.Add(specialCoin);
+            if (gameRecord.specialCoins.Count < levelIndex)
+                gameRecord.specialCoins.Add(specialCoin);
         }
         else
         {
@@ -86,12 +89,13 @@ public class Model : MonoBehaviour
         if(gameRecord.maxScores[levelIndex - 1] < maxScore)
         gameRecord.maxScores[levelIndex - 1] = maxScore;
 
-        if (gameRecord.specialRewards[levelIndex - 1] < specialCoin)
-            gameRecord.specialRewards[levelIndex - 1] = specialCoin;
+        if (gameRecord.specialCoins[levelIndex - 1] < specialCoin)
+            gameRecord.specialCoins[levelIndex - 1] = specialCoin;
 
         if(levelIndex == gameRecord.beingPassedLevel)
             gameRecord.beingPassedLevel++;
 
         gameRecord.Save();
+        levelIndex += 1;
     }   
 }

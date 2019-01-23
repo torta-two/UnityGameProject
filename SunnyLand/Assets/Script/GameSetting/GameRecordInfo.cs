@@ -8,21 +8,23 @@ public class GameRecordInfo : ScriptableObject
 {
     public int beingPassedLevel = 1;
     public int levelIndex = 1;
-    public List<int> specialRewards = new List<int>();
+    public List<int> specialCoins = new List<int>();
     public List<int> maxScores = new List<int>();
-
-    public void OnEnable()
-    {
-        for (int i = 0; i < maxScores.Count; i++)
-        {
-            if (PlayerPrefs.HasKey("maxScore" + (i + 1).ToString()))
-                maxScores[i] = PlayerPrefs.GetInt("maxScore" + (i + 1).ToString());            
-        }
-    }
 
     public void OnDestroy()
     {
         Save();
+    }
+
+    public void Load()
+    {
+        for (int i = 0; i < maxScores.Count; i++)
+        {
+            if (PlayerPrefs.HasKey("maxScore" + (i + 1).ToString()))
+                maxScores[i] = PlayerPrefs.GetInt("maxScore" + (i + 1).ToString());
+            if (PlayerPrefs.HasKey("specialCoin" + (i + 1).ToString()))
+                specialCoins[i] = PlayerPrefs.GetInt("specialCoin" + (i + 1).ToString());
+        }
     }
 
     public void Save()
@@ -30,6 +32,7 @@ public class GameRecordInfo : ScriptableObject
         for (int i = 0; i < maxScores.Count; i++)
         {
             PlayerPrefs.SetInt("maxScore" + (i + 1).ToString(), maxScores[i]);
+            PlayerPrefs.SetInt("specialCoin" + (i + 1).ToString(), specialCoins[i]);
         }
         PlayerPrefs.Save();
     }
@@ -39,8 +42,10 @@ public class GameRecordInfo : ScriptableObject
         for (int i = 0; i < maxScores.Count; i++)
         {
             maxScores[i] = 0;
+            specialCoins[i] = 0;
 
             PlayerPrefs.SetInt("maxScore" + (i + 1).ToString(), maxScores[i]);
+            PlayerPrefs.SetInt("specialCoin" + (i + 1).ToString(), specialCoins[i]);
         }
         PlayerPrefs.Save();
     }

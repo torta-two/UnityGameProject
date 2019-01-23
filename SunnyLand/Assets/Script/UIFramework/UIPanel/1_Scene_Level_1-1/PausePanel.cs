@@ -1,41 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PausePanel : BasePanel
 {
+    public bool onAnimEnd = false;
     private Text maxScore;
     private Text currentScore;
 
     protected override void Awake()
     {
         base.Awake();
-        currentScore = transform.Find("CurrentScore").GetComponent<Text>();
-        maxScore = transform.Find("MaxScore").GetComponent<Text>();
+        currentScore = transform.Find("CurrentScorePanel/CurrentScore").GetComponent<Text>();
+        maxScore = transform.Find("MaxScorePanel/MaxScore").GetComponent<Text>();
 
         ctrl.model.OnScoreChange += OnScoreChange;
         ctrl.model.OnMaxScoreChange += OnMaxScoreChange;
     }
 
+    public override void OnEnter()
+    {
+        canvasGroup.blocksRaycasts = true;
+        Tween tween = canvasGroup.DOFade(1, 0.2f);
 
-    public void OnClickResumeButton()
+        tween.OnComplete(() => { Time.timeScale = 0; });
+    }
+
+    #region button click event
+
+    public void OnClickCloseButton()
     {
         Time.timeScale = 1;
     }
-  
+
     public void OnClickRestartButton()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(ctrl.model.gameRecord.levelIndex + 1);
     }
 
-    public void OnClickReturnMenuButton()
+    public void OnClickReturnButton()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
+
+    public void OnClickShareButton()
+    {
+        System.Diagnostics.Process.Start("https://www.baidu.com/");
+    }
+
+    #endregion
 
     private void OnMaxScoreChange(int maxScore)
     {

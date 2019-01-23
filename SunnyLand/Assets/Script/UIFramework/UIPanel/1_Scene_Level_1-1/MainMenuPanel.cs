@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MainMenuPanel : BasePanel
 {
     private Image[] hearts;
@@ -30,7 +31,7 @@ public class MainMenuPanel : BasePanel
     }
 
 
-
+    #region button click event
 
     public void OnClickSystemSettingButton()
     {
@@ -41,6 +42,8 @@ public class MainMenuPanel : BasePanel
     {
         UIManager.PushPanel(UIPanelInfo.PanelType.PausePanel);
     }
+
+    #endregion
 
     private void OnScoreChange(int score)
     {

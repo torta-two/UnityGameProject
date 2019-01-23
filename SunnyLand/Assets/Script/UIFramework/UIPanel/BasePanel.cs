@@ -47,9 +47,6 @@ public class BasePanel : MonoBehaviour
 
     public virtual void OnEnter()
     {
-        if (canvasGroup == null)
-            Debug.Log("null");
-
         canvasGroup.blocksRaycasts = true;
         canvasGroup.DOFade(1, 0.2f);       
     }

@@ -60,7 +60,7 @@ public class LevelSelectButton : MonoBehaviour
         Vector3 temp = transform.localPosition;
         
         radian += 1f * Time.deltaTime;
-        temp.y = Mathf.Sin(radian + thislevel) * 15f;
+        temp.y = Mathf.Sin(radian + thislevel) * 20f;
 
         transform.localPosition = temp;
     }
@@ -77,7 +77,9 @@ public class LevelSelectButton : MonoBehaviour
     public void OnLevelSelectButtonClick()
     {
         gameRecordInfo.levelIndex = thislevel;
-
-        SceneManager.LoadScene(thislevel + 1);       
+        if(thislevel <= gameRecordInfo.beingPassedLevel)
+        {
+            SceneManager.LoadScene(thislevel + 1);
+        }
     }
 }
