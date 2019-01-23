@@ -8,11 +8,12 @@ public class Model : MonoBehaviour
     public GameRecordInfo gameRecord;
     public event Action<int> OnScoreChange;
     public event Action<int> OnMaxScoreChange;
+    public event Action<int, int> OnBalance;
 
     private int levelIndex = 0;
     private int score = 0;
     private int maxScore = 0;
-    private int specialReward = 0;
+    private int specialCoin = 0;
 
     private void Awake()
     {
@@ -40,7 +41,11 @@ public class Model : MonoBehaviour
             if (gameRecord.maxScores.Count < levelIndex)
                 gameRecord.maxScores.Add(maxScore);
             if (gameRecord.specialRewards.Count < levelIndex)
-                gameRecord.specialRewards.Add(specialReward);
+                gameRecord.specialRewards.Add(specialCoin);
+        }
+        else
+        {
+            maxScore = gameRecord.maxScores[levelIndex - 1];
         }
     }
 
@@ -56,7 +61,7 @@ public class Model : MonoBehaviour
             case "SpecialCoin":
                 {
                     score += 100;
-                    specialReward++;
+                    specialCoin++;
                 }
                 break;
             case "CommonEnemy":
@@ -75,11 +80,14 @@ public class Model : MonoBehaviour
 
     public void SaveScore()
     {
+        if(OnBalance != null)
+            OnBalance(score,specialCoin);
+
         if(gameRecord.maxScores[levelIndex - 1] < maxScore)
         gameRecord.maxScores[levelIndex - 1] = maxScore;
 
-        if (gameRecord.specialRewards[levelIndex - 1] < specialReward)
-            gameRecord.specialRewards[levelIndex - 1] = specialReward;
+        if (gameRecord.specialRewards[levelIndex - 1] < specialCoin)
+            gameRecord.specialRewards[levelIndex - 1] = specialCoin;
 
         if(levelIndex == gameRecord.beingPassedLevel)
             gameRecord.beingPassedLevel++;

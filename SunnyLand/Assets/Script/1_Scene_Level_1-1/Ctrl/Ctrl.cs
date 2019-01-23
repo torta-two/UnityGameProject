@@ -62,10 +62,11 @@ public class Ctrl : MonoBehaviour
             if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
             {
                 player.GetComponent<PlayerControl>().OnPassLevel();
-                model.SaveScore();
-
                 UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
-                audioManager.Play(audioManager.passLevel, player.audioSource);
+                UIManager.PushPanel(UIPanelInfo.PanelType.BalancePanel);
+                model.SaveScore();
+               
+                audioManager.Play(audioManager.passLevel, player.audioSource);              
             }
         }
 
