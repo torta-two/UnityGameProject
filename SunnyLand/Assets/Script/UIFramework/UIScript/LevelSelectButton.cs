@@ -4,29 +4,31 @@ using UnityEngine.SceneManagement;
 public class LevelSelectButton : MonoBehaviour
 {
     public GameRecordInfo gameRecordInfo;
-    public int thislevel = 1;
+    public int levelIndex = 1;    
 
     private Transform outline;
     private Transform outline_Passed;
     private Transform lockPanel;
     private Transform playerImage;
-    private Transform rewardUI;
+    private Transform specialCoinPanel;
+    [HideInInspector]
+    public Transform[] specialCoin;
 
     private float radian = 0; //漂浮动画弧度增量
 
-    private void Start()
+    private void Awake()
     {
         outline = transform.Find("outline");
         outline_Passed = transform.Find("outline_Passed");
         lockPanel = transform.Find("lockPanel");
         playerImage = transform.Find("Player");
-        rewardUI = transform.Find("RewardUI");
+        specialCoinPanel = transform.Find("SpecialCoin");
 
-        if (gameRecordInfo.beingPassedLevel > thislevel)
+        if (gameRecordInfo.beingPassedLevel > levelIndex)
         {
-            SetUIActive(outline_Passed: true, rewardUI: true);
+            SetUIActive(outline_Passed: true, specialCoinPanel: true);
         }
-        else if (gameRecordInfo.beingPassedLevel == thislevel)
+        else if (gameRecordInfo.beingPassedLevel == levelIndex)
         {
             SetUIActive(outline: true, player: true);
         }
@@ -34,11 +36,15 @@ public class LevelSelectButton : MonoBehaviour
         {
             SetUIActive(lockPanel: true);
         }
+
+        specialCoin = new Transform[3];
+        for (int i = 1; i <= 3; i++)
+            specialCoin[i - 1] = specialCoinPanel.Find(i.ToString());
     }
 
     private void Update()
     {
-        if (gameRecordInfo.beingPassedLevel == thislevel)
+        if (gameRecordInfo.beingPassedLevel == levelIndex)
         {
             OutlineAnim();
         }
@@ -60,26 +66,26 @@ public class LevelSelectButton : MonoBehaviour
         Vector3 temp = transform.localPosition;
         
         radian += 1f * Time.deltaTime;
-        temp.y = Mathf.Sin(radian + thislevel) * 20f;
+        temp.y = Mathf.Sin(radian + levelIndex) * 20f;
 
         transform.localPosition = temp;
     }
 
-    private void SetUIActive(bool outline = false,bool outline_Passed = false, bool lockPanel = false, bool player = false, bool rewardUI = false)
+    private void SetUIActive(bool outline = false,bool outline_Passed = false, bool lockPanel = false, bool player = false, bool specialCoinPanel = false)
     {
         this.outline.gameObject.SetActive(outline);
         this.outline_Passed.gameObject.SetActive(outline_Passed);
         this.lockPanel.gameObject.SetActive(lockPanel);
         this.playerImage.gameObject.SetActive(player);
-        this.rewardUI.gameObject.SetActive(rewardUI);
+        this.specialCoinPanel.gameObject.SetActive(specialCoinPanel);
     }
 
     public void OnLevelSelectButtonClick()
     {
-        gameRecordInfo.levelIndex = thislevel;
-        if(thislevel <= gameRecordInfo.beingPassedLevel)
+        gameRecordInfo.levelIndex = levelIndex;
+        if(levelIndex <= gameRecordInfo.beingPassedLevel)
         {
-            SceneManager.LoadScene(thislevel + 1);
+            SceneManager.LoadScene(levelIndex + 1);
         }
     }
 }

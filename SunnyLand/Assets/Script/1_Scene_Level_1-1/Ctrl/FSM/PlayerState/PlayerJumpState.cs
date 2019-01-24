@@ -21,9 +21,7 @@ public class PlayerJumpState : State<PlayerControl>
     public override void Enter()
     {
         owner.ctrl.audioManager.Play(owner.ctrl.audioManager.jump, owner.audioSource);
-
-        owner.rgd2D.AddForce(owner.playerInfo.jumpForce * Vector2.up);
-       
+        owner.rgd2D.AddForce(owner.playerInfo.jumpForce * Vector2.up);      
         owner.isJump = true;
         owner.isGrounded = false;      
     }

@@ -7,10 +7,12 @@ using System;
 
 public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public PlayerInfo player;    
+    public PlayerInfo player;
+    public AudioClip audioClip;
 
     private Text moneyText;
     private int money;
+    private AudioSource audioSource;
     private Animator playerImage;
     private Toggle toggle;
     private Transform toggleButton;
@@ -29,9 +31,10 @@ public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
 
     private void Start ()
-    {
-        moneyText = transform.parent.parent.Find("MoneyPanel").Find("Money").GetComponent<Text>();
-        money = Convert.ToInt32(moneyText.text);
+    { 
+        audioSource = transform.parent.parent.Find("MoneyPanel").GetComponent<AudioSource>();
+        moneyText = audioSource.transform.Find("Money").GetComponent<Text>();
+        money = Convert.ToInt32(moneyText.text);        
                 
         Text price = buyButton.GetComponentInChildren<Text>();
         price.text = player.price.ToString();
@@ -100,6 +103,9 @@ public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (money >= player.price)
         {
             StartCoroutine(MoneyAnim(player.price));
+            audioSource.clip = audioClip;
+            audioSource.loop = true;
+            audioSource.Play();
         }
     }
 
@@ -109,9 +115,12 @@ public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             money -= 10;
             moneyText.text = money.ToString();
-            yield return new WaitForSeconds(0.001f);
+            
+            yield return new WaitForSeconds(0.01f);
         }
         IsPurchase(true);
+
+        audioSource.Stop();
 
         StopCoroutine(MoneyAnim(lossMoney));
     }

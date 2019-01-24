@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224522321661286562}
   m_Layer: 5
-  m_Name: RewardUI
+  m_Name: SpecialCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224722476405040990}
   m_Layer: 5
-  m_Name: RewardUI
+  m_Name: SpecialCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,7 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224984634014860872}
   m_Layer: 5
-  m_Name: RewardUI
+  m_Name: SpecialCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,6 +702,7 @@ GameObject:
   - component: {fileID: 224571671414126434}
   - component: {fileID: 114679772811907834}
   - component: {fileID: 114605160736470728}
+  - component: {fileID: 82794465910576832}
   m_Layer: 5
   m_Name: LevelSelectDrag
   m_TagString: Untagged
@@ -718,7 +719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224444940059708752}
   m_Layer: 5
-  m_Name: RewardUI
+  m_Name: SpecialCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,7 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224730169233358672}
   m_Layer: 5
-  m_Name: RewardUI
+  m_Name: SpecialCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -917,7 +918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224267089994940346}
   m_Layer: 5
-  m_Name: RewardUI
+  m_Name: SpecialCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1371,6 +1372,86 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &82794465910576832
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576774718649692}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95020539226037420
 Animator:
   serializedVersion: 3
@@ -2433,7 +2514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
-  thislevel: 4
+  levelIndex: 4
+  specialCoin: []
 --- !u!114 &114304095919201670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2446,7 +2528,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
-  thislevel: 5
+  levelIndex: 5
+  specialCoin: []
 --- !u!114 &114312551567900090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2594,7 +2677,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
-  thislevel: 3
+  levelIndex: 3
+  specialCoin: []
 --- !u!114 &114375392112982424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2965,7 +3049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
-  thislevel: 2
+  levelIndex: 2
+  specialCoin: []
 --- !u!114 &114596919622864504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2990,7 +3075,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
-  thislevel: 6
+  levelIndex: 6
+  specialCoin: []
 --- !u!114 &114599547615068076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3061,6 +3147,7 @@ MonoBehaviour:
   bgs:
   - {fileID: 114375392112982424}
   - {fileID: 114703063370355448}
+  audioClip: {fileID: 8300000, guid: c2982c134b9b5bb46bfe312e383d3e95, type: 3}
 --- !u!114 &114615659534445954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3559,7 +3646,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
-  thislevel: 1
+  levelIndex: 1
+  specialCoin:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114743198675273722
 MonoBehaviour:
   m_ObjectHideFlags: 1

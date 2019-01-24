@@ -49,14 +49,5 @@ public class PlayerRunState : State<PlayerControl>
     public override void Exit()
     {
 
-    }
-
-    //private void Flip()
-    //{
-    //    Vector3 tempScale = owner.transform.localScale;
-    //    tempScale.x *= -1;
-    //    owner.transform.localScale = tempScale;
-
-    //    owner.isFacingRight = !owner.isFacingRight;
-    //}
+    }   
 }

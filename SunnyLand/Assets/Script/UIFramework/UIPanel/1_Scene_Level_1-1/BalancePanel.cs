@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using System;
 
 public class BalancePanel : BasePanel
 {
     private Text score;
     private Text reward;
+    private Text money;
     private Image[] star = new Image[3];
-
+    
     protected override void Awake()
     {
         base.Awake();
         score = transform.Find("ScorePanel/Score").GetComponent<Text>();
         reward = transform.Find("RewardPanel/Reward").GetComponent<Text>();
+        money = transform.Find("MoneyPanel/Money").GetComponent<Text>();
 
         for (int i = 0;i<star.Length;i++)
         {
@@ -44,6 +47,20 @@ public class BalancePanel : BasePanel
         }
 
         StopCoroutine(ScoreAnim(score, text));
+
+        StartCoroutine(MoneyAnim(Convert.ToInt32(money.text), score * 3));
+    }
+
+    private IEnumerator MoneyAnim(int money, int addMoney)
+    {
+        for (int i = 1; i <= addMoney; i++)
+        {
+            money += 10;
+            this.money.text = money.ToString();
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        StopCoroutine(MoneyAnim(money, addMoney));
     }
 
     private IEnumerator StarAnim(int specialCoin)

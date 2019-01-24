@@ -192,6 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224477615927869424}
   - component: {fileID: 222173466038533584}
+  - component: {fileID: 82773787576405872}
   m_Layer: 5
   m_Name: MoneyPanel
   m_TagString: Untagged
@@ -407,7 +408,6 @@ GameObject:
   - component: {fileID: 114238517215398028}
   - component: {fileID: 225628971379837282}
   - component: {fileID: 114238142280213572}
-  - component: {fileID: 82828265795362198}
   m_Layer: 5
   m_Name: StorePanel
   m_TagString: Untagged
@@ -432,12 +432,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &82828265795362198
+--- !u!82 &82773787576405872
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1943532128521528}
+  m_GameObject: {fileID: 1546096452415366}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -585,6 +585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 48b6b258d941bb243a7fe3bfe1b840b9, type: 2}
+  audioClip: {fileID: 8300000, guid: 0ae90939f33383543bda2983361261e3, type: 3}
 --- !u!114 &114199663224600210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1265,6 +1266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 6ccc870ddf693924685011ac121d82d0, type: 2}
+  audioClip: {fileID: 0}
 --- !u!114 &114710935080148884
 MonoBehaviour:
   m_ObjectHideFlags: 1

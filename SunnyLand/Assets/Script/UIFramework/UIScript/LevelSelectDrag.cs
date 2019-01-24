@@ -9,25 +9,27 @@ public class LevelSelectDrag : MonoBehaviour, IEndDragHandler, IBeginDragHandler
     public float dragSpeed = 5.0f;
     public Toggle[] toggles = new Toggle[2];
     public Toggle[] bgs = new Toggle[2];
+    public AudioClip audioClip;
 
     private ScrollRect scrollRect;
+    private AudioSource audioSource;
     private float[] pageArray = { 0.01f, 1 };//, 0.3333f, 0.6666f    
     private float targetHorizental = 0;
     private bool isDraging = false;
 
-    // Use this for initialization
-    void Start()
+    private void Awake()
     {
         scrollRect = GetComponent<ScrollRect>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.clip = audioClip;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isDraging)
-        {
             scrollRect.horizontalNormalizedPosition = Mathf.Lerp(scrollRect.horizontalNormalizedPosition, targetHorizental, Time.deltaTime * dragSpeed);
-        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -54,6 +56,7 @@ public class LevelSelectDrag : MonoBehaviour, IEndDragHandler, IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
         isDraging = true;
+        audioSource.Play();
     }
 
 
