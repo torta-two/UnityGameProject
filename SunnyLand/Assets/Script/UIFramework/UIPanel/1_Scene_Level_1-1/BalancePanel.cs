@@ -31,17 +31,6 @@ public class BalancePanel : BasePanel
         StartCoroutine(ScoreAnim(score,this.score));
         StartCoroutine(ScoreAnim(score * 3, reward));
         StartCoroutine(StarAnim(specialCoin));
-
-        //for (int i = 0; i < star.Length; i++)
-        //{
-        //    if (i < specialCoin)
-        //    {
-        //        star[i].gameObject.SetActive(true);
-        //        star[i].transform.DOScale(Vector3.one, 0.2f);
-        //    }
-        //    else
-        //        break;
-        //}
     }
 
 
@@ -50,7 +39,6 @@ public class BalancePanel : BasePanel
         for (int i = 0; i < score + 1; i += 10)
         {
             text.text = i.ToString();
-            //ctrl.audioManager.Play(ctrl.audioManager.GetScore, ctrl.source);
 
             yield return new WaitForSeconds(0.01f);
         }
@@ -65,7 +53,7 @@ public class BalancePanel : BasePanel
             if (i < specialCoin)
             {
                 star[i].gameObject.SetActive(true);
-                star[i].transform.DOScale(Vector3.one, 0.2f);
+                star[i].transform.DOScale(Vector3.one, 0.25f);
                 ctrl.audioManager.Play(ctrl.audioManager.GetStar, ctrl.source);
 
                 yield return new WaitForSeconds(0.2f);

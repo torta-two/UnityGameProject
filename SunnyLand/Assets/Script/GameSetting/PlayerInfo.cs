@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerInfo : ScriptableObject
 {
     public string playerName;
+    public int price;
+    public bool isPurchase;
+    public bool isSelect;
     public int maxHP;
     public float maxSpeed;
     public float jumpForce;

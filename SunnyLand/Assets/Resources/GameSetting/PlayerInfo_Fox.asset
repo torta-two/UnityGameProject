@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: PlayerInfo_Fox
   m_EditorClassIdentifier: 
   playerName: Fox
+  price: 0
+  isPurchase: 1
+  isSelect: 1
   maxHP: 3
   maxSpeed: 7
   jumpForce: 750

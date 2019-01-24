@@ -10,11 +10,7 @@ public class GameRecordInfo : ScriptableObject
     public int levelIndex = 1;
     public List<int> specialCoins = new List<int>();
     public List<int> maxScores = new List<int>();
-
-    public void OnDestroy()
-    {
-        Save();
-    }
+    public int money = 0;
 
     public void Load()
     {

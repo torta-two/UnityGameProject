@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: PlayerInfo_Rabbit
   m_EditorClassIdentifier: 
   playerName: Rabbit
+  price: 200
+  isPurchase: 1
+  isSelect: 0
   maxHP: 4
   maxSpeed: 6
   jumpForce: 900

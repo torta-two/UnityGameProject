@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class StorePanel : BasePanel
@@ -10,7 +11,7 @@ public class StorePanel : BasePanel
     protected override void Awake()
     {
         base.Awake();
-        rectTransform = GetComponent<RectTransform>();
+        rectTransform = GetComponent<RectTransform>();   
     }
 
     public override void OnEnter()
@@ -24,4 +25,5 @@ public class StorePanel : BasePanel
         base.OnExit();
         rectTransform.DOLocalMoveY(-50, 0.2f);
     }
+
 }
