@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InitializeUI : MonoBehaviour
 {
@@ -25,5 +23,15 @@ public class InitializeUI : MonoBehaviour
     private void Awake()
     {
         UIManager.PushPanel(mainPanel);
+    }
+
+
+    private void OnApplicationQuit()
+    {
+        if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.ExitWarningPanel,true))
+        {            
+            Application.CancelQuit();
+            UIManager.PushPanel(UIPanelInfo.PanelType.ExitWarningPanel);
+        }                
     }
 }

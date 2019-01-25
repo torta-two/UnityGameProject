@@ -12,16 +12,12 @@ public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     [HideInInspector]
     public event Func<int,bool> OnBuyPlayer;
-
-    //[HideInInspector]
-    //public event Action OnSelectPlayer;
     
     private Animator playerImage;
     private Toggle toggle;
     private Transform toggleButton;
     private Transform buyButton;
     private Transform introduction;
-    private StorePanel storePanel;
 
     private void Awake()
     {
@@ -32,7 +28,6 @@ public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         toggleButton = transform.Find("toggleButton");
         buyButton = transform.Find("buyButton");
         introduction = transform.Find("Introduction");
-        storePanel = transform.parent.parent.GetComponent<StorePanel>();
     }
 
     private void Start ()

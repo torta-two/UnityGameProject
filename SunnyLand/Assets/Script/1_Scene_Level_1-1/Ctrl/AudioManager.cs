@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource BGMSource;
-
     public AudioClip BGM;
     public AudioClip jump;
     public AudioClip attack;
@@ -16,32 +14,31 @@ public class AudioManager : MonoBehaviour
     public AudioClip passLevel;
     public AudioClip GetStar;
 
-    private float volume = 1;
-    private float firstVolume;
+    [HideInInspector]
+    public float bgmVolume = 0.6f;
+    [HideInInspector]
+    public float effectVolume = 1;
 
-    private void Start()
-    {
-        volume = GetComponent<Ctrl>().volume;
-        firstVolume = BGMSource.volume;
-    }
+    private AudioSource bgmSource;
 
-    public void Play(AudioClip clip, AudioSource source)
+    public void Play(AudioClip clip, AudioSource source,bool isBGM = false)
     {
         source.clip = clip;
 
-        if (source != BGMSource)
-        {            
-            source.volume = volume;
+        if(isBGM)
+        {
+            source.volume = bgmVolume;
+            if (bgmSource == null)
+                bgmSource = source;            
         }
+        else
+            source.volume = effectVolume;
 
         source.Play();
     }
 
     private void Update()
     {
-        volume = GetComponent<Ctrl>().volume;
-
-        BGMSource.volume = volume * firstVolume;
+        bgmSource.volume = bgmVolume;
     }
-    
 }

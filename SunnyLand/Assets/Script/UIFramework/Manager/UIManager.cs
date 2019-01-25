@@ -82,20 +82,35 @@ public class UIManager
         return instPanel;
     }
 
-    //public void Initialize(UIPanelInfo.PanelType mainPanel)
-    //{
-    //    PushPanel(mainPanel);
-    //}
-
-    public bool CheckPanelExist(UIPanelInfo.PanelType type)
+    /// <summary>
+    /// 检测panel是否在场景中
+    /// </summary>
+    /// <param name="type">panel的类型</param>
+    /// <param name="checkDisplay">检查panel是否正在显示，默认不检查</param>
+    /// <returns></returns>
+    public bool CheckPanelExist(UIPanelInfo.PanelType type,bool checkDisplay = false)
     {
         bool uiPanelInScene = false;
 
         BasePanel panel = instPanelDict.TryGetValue(type);
 
         if (panel != null)
+        {
             uiPanelInScene = true;
 
+            if (checkDisplay)
+            {
+                if (panel.canvasGroup.alpha == 0)
+                {
+                    uiPanelInScene = false;
+                }
+                else
+                {
+                    uiPanelInScene = true;
+                }
+            }
+        }
+     
         return uiPanelInScene;
-    }
+    }  
 }

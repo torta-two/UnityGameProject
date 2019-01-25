@@ -7,17 +7,17 @@ public class CameraFollow : MonoBehaviour
     public float minX = 0f;
 
     private Transform player;
-    private AudioManager audioManager;
-    public AudioSource audioSource;
+    private AudioManager audioManager;   
+    private AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
         player = FindObjectOfType<PlayerControl>().transform;
-        audioManager = GameObject.FindWithTag("Ctrl").GetComponent<AudioManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         audioSource = GetComponent<AudioSource>();
 
         audioSource.loop = true;
-        audioManager.Play(audioManager.BGM, audioSource);        
+        audioManager.Play(audioManager.BGM, audioSource, true);
     }
 
     private void FixedUpdate()

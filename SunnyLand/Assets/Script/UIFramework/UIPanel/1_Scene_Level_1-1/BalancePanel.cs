@@ -74,7 +74,7 @@ public class BalancePanel : BasePanel
             {
                 star[i].gameObject.SetActive(true);
                 star[i].transform.DOScale(Vector3.one, 0.25f);
-                ctrl.audioManager.Play(ctrl.audioManager.GetStar, ctrl.source);
+                ctrl.audioManager.Play(ctrl.audioManager.GetStar, ctrl.audioSource);
 
                 yield return new WaitForSeconds(0.2f);
             }

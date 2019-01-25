@@ -14,6 +14,11 @@ public class GameRecordInfo : ScriptableObject
 
     public void Load()
     {
+        if(PlayerPrefs.HasKey("money"))
+        {
+            money = PlayerPrefs.GetInt("money");
+        }
+
         for (int i = 0; i < maxScores.Count; i++)
         {
             if (PlayerPrefs.HasKey("maxScore" + (i + 1).ToString()))
@@ -25,6 +30,8 @@ public class GameRecordInfo : ScriptableObject
 
     public void Save()
     {
+        PlayerPrefs.SetInt("Money", money);
+
         for (int i = 0; i < maxScores.Count; i++)
         {
             PlayerPrefs.SetInt("maxScore" + (i + 1).ToString(), maxScores[i]);

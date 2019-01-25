@@ -7,7 +7,7 @@ public class BasePanel : MonoBehaviour
 {
     protected Ctrl ctrl;
 
-    protected CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;
     protected Button btn;
     protected UIManager UIManager;
 

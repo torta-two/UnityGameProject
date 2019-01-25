@@ -22,7 +22,9 @@ public class Ctrl : MonoBehaviour
     public AudioManager audioManager;
 
     [HideInInspector]
-    public AudioSource source;
+    public AudioSource audioSource;
+
+    private InitializeUI initializeUI;
 
     [HideInInspector]
     public UIManager UIManager;
@@ -35,9 +37,20 @@ public class Ctrl : MonoBehaviour
     private void Awake()
     {
         audioManager = GetComponent<AudioManager>();
-        source = GetComponent<AudioSource>();
-        player = GetComponentInChildren<PlayerControl>();
-        UIManager = GetComponent<InitializeUI>().UIManager;
+        audioSource = GetComponent<AudioSource>();
+        initializeUI = GetComponent<InitializeUI>();        
+
+        Transform PlayerTrans = transform.Find("PlayerTrans");
+
+        foreach (var item in initializeUI.panelInfo.playerList)
+        {
+            if(item.playerInfo.isSelect)
+            {
+                player = Instantiate(item, PlayerTrans.position, Quaternion.identity,transform);
+            }
+        }
+
+        UIManager = initializeUI.UIManager;
 
         model = FindObjectOfType<Model>();
 

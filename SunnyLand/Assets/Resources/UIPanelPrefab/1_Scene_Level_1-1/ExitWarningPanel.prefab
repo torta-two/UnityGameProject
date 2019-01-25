@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114317464931888466}
   - component: {fileID: 114685009938084948}
   m_Layer: 5
-  m_Name: RestartButton
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114067307803991752}
   - component: {fileID: 114504789051370406}
   m_Layer: 5
-  m_Name: ReturnButton
+  m_Name: CancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 222197796945357642}
   - component: {fileID: 114477629491961626}
   - component: {fileID: 225744151427471906}
-  - component: {fileID: 114485189493508384}
+  - component: {fileID: 114054493895315258}
   m_Layer: 5
   m_Name: ExitWarningPanel
   m_TagString: Untagged
@@ -133,6 +133,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114054493895315258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952673141849676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5b23c4d77128f4498666e4f9c8914f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
 --- !u!114 &114067307803991752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,7 +204,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Return
+  m_Text: Cancel
 --- !u!114 &114317464931888466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,7 +264,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You are dead\uFF01QAQ"
+  m_Text: "Exiting now will loss all game data\uFF01"
 --- !u!114 &114477629491961626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,17 +292,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114485189493508384
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952673141849676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b30fdbe7b3d3d44b4b77ae7392d968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114504789051370406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,8 +331,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114485189493508384}
-        m_MethodName: OnClickReturnButton
+      - m_Target: {fileID: 114054493895315258}
+        m_MethodName: OnClickCancelButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -375,7 +376,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: Exit
 --- !u!114 &114685009938084948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,8 +416,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114485189493508384}
-        m_MethodName: OnClickRestartButton
+      - m_Target: {fileID: 114054493895315258}
+        m_MethodName: OnClickExitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

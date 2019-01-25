@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Rabbit
   price: 1888
-  isPurchase: 1
-  isSelect: 1
-  maxHP: 1
-  maxSpeed: 6
+  isPurchase: 0
+  isSelect: 0
+  maxHP: 4
+  maxSpeed: 5.5
   jumpForce: 900
   crouchSpeedFactor: 1
   climbSpeed: 3
