@@ -15,4 +15,4 @@ MonoBehaviour:
   levelIndex: 1
   specialCoins: 
   maxScores: 
-  money: 0
+  money: 50

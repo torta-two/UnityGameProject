@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-using System;
 
 public class BalancePanel : BasePanel
 {
@@ -12,32 +10,34 @@ public class BalancePanel : BasePanel
     private Text reward;
     private Text money;
     private Image[] star = new Image[3];
-    
+
     protected override void Awake()
     {
         base.Awake();
         score = transform.Find("ScorePanel/Score").GetComponent<Text>();
         reward = transform.Find("RewardPanel/Reward").GetComponent<Text>();
         money = transform.Find("MoneyPanel/Money").GetComponent<Text>();
+        money.text = ctrl.model.gameRecord.money.ToString();
 
-        for (int i = 0;i<star.Length;i++)
+        for (int i = 0; i < star.Length; i++)
         {
-            star[i] = transform.Find("StarPanel/Star" + ( i + 1 ) + "/star").GetComponent<Image>();
+            star[i] = transform.Find("StarPanel/Star" + (i + 1) + "/star").GetComponent<Image>();
             star[i].gameObject.SetActive(false);
         }
 
-        ctrl.model.OnBalance += OnBalance; 
+        ctrl.model.OnBalance += OnBalance;
     }
 
-    private void OnBalance(int score,int specialCoin)
+    private void OnBalance(int score, int specialCoin)
     {
-        StartCoroutine(ScoreAnim(score,this.score));
-        StartCoroutine(ScoreAnim(score * 3, reward));
+        StartCoroutine(ScoreAnim(score, this.score));
+        StartCoroutine(ScoreAnim(score * 3, reward, true));
         StartCoroutine(StarAnim(specialCoin));
     }
 
+    #region Coroutine Animation
 
-    private IEnumerator ScoreAnim(int score,Text text)
+    private IEnumerator ScoreAnim(int score, Text text, bool isStartMoneyAnim = false)
     {
         for (int i = 0; i < score + 1; i += 10)
         {
@@ -46,21 +46,24 @@ public class BalancePanel : BasePanel
             yield return new WaitForSeconds(0.01f);
         }
 
-        StopCoroutine(ScoreAnim(score, text));
+        if (isStartMoneyAnim)
+        {
+            StartCoroutine(MoneyAnim(score));
+        }
 
-        StartCoroutine(MoneyAnim(Convert.ToInt32(money.text), score * 3));
+        StopCoroutine(ScoreAnim(score, text));
     }
 
-    private IEnumerator MoneyAnim(int money, int addMoney)
+    private IEnumerator MoneyAnim(int addMoney)
     {
-        for (int i = 1; i <= addMoney; i++)
+        for (int i = 1; i <= addMoney; i += 10)
         {
-            money += 10;
-            this.money.text = money.ToString();
+            ctrl.model.gameRecord.money += 10;
+            money.text = ctrl.model.gameRecord.money.ToString();
             yield return new WaitForSeconds(0.01f);
         }
 
-        StopCoroutine(MoneyAnim(money, addMoney));
+        StopCoroutine(MoneyAnim(addMoney));
     }
 
     private IEnumerator StarAnim(int specialCoin)
@@ -82,6 +85,8 @@ public class BalancePanel : BasePanel
         StopCoroutine(StarAnim(specialCoin));
     }
 
+    #endregion
+
     #region button click event
 
     public void OnClickReturnButton()
@@ -97,7 +102,7 @@ public class BalancePanel : BasePanel
 
     public void OnClickNextLevelButton()
     {
-        SceneManager.LoadScene(ctrl.model.levelIndex + 1);        
+        SceneManager.LoadScene(ctrl.model.levelIndex + 1);
     }
 
     #endregion

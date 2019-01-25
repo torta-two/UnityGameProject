@@ -10,14 +10,18 @@ public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public PlayerInfo player;
     public AudioClip audioClip;
 
-    private Text moneyText;
-    private int money;
-    private AudioSource audioSource;
+    [HideInInspector]
+    public event Func<int,bool> OnBuyPlayer;
+
+    //[HideInInspector]
+    //public event Action OnSelectPlayer;
+    
     private Animator playerImage;
     private Toggle toggle;
     private Transform toggleButton;
     private Transform buyButton;
     private Transform introduction;
+    private StorePanel storePanel;
 
     private void Awake()
     {
@@ -28,14 +32,11 @@ public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         toggleButton = transform.Find("toggleButton");
         buyButton = transform.Find("buyButton");
         introduction = transform.Find("Introduction");
+        storePanel = transform.parent.parent.GetComponent<StorePanel>();
     }
 
     private void Start ()
-    { 
-        audioSource = transform.parent.parent.Find("MoneyPanel").GetComponent<AudioSource>();
-        moneyText = audioSource.transform.Find("Money").GetComponent<Text>();
-        money = Convert.ToInt32(moneyText.text);        
-                
+    {                    
         Text price = buyButton.GetComponentInChildren<Text>();
         price.text = player.price.ToString();
 
@@ -100,30 +101,8 @@ public class SelectPlayer : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnClickBuyButton()
     {
-        if (money >= player.price)
-        {
-            StartCoroutine(MoneyAnim(player.price));
-            audioSource.clip = audioClip;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
-    }
-
-    private IEnumerator MoneyAnim(int lossMoney)
-    {
-        for (int i = 0; i < lossMoney/10; i++)
-        {
-            money -= 10;
-            moneyText.text = money.ToString();
-            
-            yield return new WaitForSeconds(0.01f);
-        }
-        IsPurchase(true);
-
-        audioSource.Stop();
-
-        StopCoroutine(MoneyAnim(lossMoney));
-    }
+        IsPurchase(OnBuyPlayer(player.price));
+    } 
 
     #endregion
 }

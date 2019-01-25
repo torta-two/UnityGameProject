@@ -192,7 +192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224477615927869424}
   - component: {fileID: 222173466038533584}
-  - component: {fileID: 82773787576405872}
   m_Layer: 5
   m_Name: MoneyPanel
   m_TagString: Untagged
@@ -408,6 +407,7 @@ GameObject:
   - component: {fileID: 114238517215398028}
   - component: {fileID: 225628971379837282}
   - component: {fileID: 114238142280213572}
+  - component: {fileID: 82461307764997892}
   m_Layer: 5
   m_Name: StorePanel
   m_TagString: Untagged
@@ -432,12 +432,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &82773787576405872
+--- !u!82 &82461307764997892
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546096452415366}
+  m_GameObject: {fileID: 1943532128521528}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -624,6 +624,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0cdd90956b19d48aadd1bbc08db1d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRecord: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
+  clip: {fileID: 8300000, guid: 0ae90939f33383543bda2983361261e3, type: 3}
+  moneyText: {fileID: 0}
+  source: {fileID: 0}
+  selectPlayers: []
 --- !u!114 &114238517215398028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1073,7 +1078,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 200
+  m_Text: 1888
 --- !u!114 &114526211670752286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1106,7 +1111,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 200
+  m_Text: 0
 --- !u!114 &114528105328591456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1798,7 +1803,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 2, y: 60.011745}
-  m_SizeDelta: {x: 100, y: 45}
+  m_SizeDelta: {x: 125, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224477615927869424
 RectTransform:
@@ -1964,8 +1969,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: 0}
-  m_SizeDelta: {x: 47.69, y: 44}
+  m_AnchoredPosition: {x: -48.52, y: 0}
+  m_SizeDelta: {x: 80.96, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224788992535820466
 RectTransform:
@@ -1985,7 +1990,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 100, y: 45}
+  m_SizeDelta: {x: 125, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224863465555499924
 RectTransform:
@@ -2064,7 +2069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 700, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224956584743359776
@@ -2096,7 +2101,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943532128521528}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

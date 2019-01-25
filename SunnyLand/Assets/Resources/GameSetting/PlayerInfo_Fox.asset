@@ -17,7 +17,7 @@ MonoBehaviour:
   isSelect: 1
   maxHP: 3
   maxSpeed: 7
-  jumpForce: 750
+  jumpForce: 700
   crouchSpeedFactor: 0.3
   climbSpeed: 3
   Ground:
