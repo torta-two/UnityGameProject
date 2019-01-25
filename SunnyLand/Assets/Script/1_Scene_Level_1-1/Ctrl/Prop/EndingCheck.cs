@@ -8,7 +8,7 @@ public class EndingCheck : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            FindObjectOfType<PlayerControl>().isEnding = true;
+            FindObjectOfType<PlayerControl>().isPassLevel = true;
         }
     }
 }

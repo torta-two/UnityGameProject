@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -25,7 +26,8 @@ public class PlayerControl : MonoBehaviour
     [HideInInspector]
     public AudioSource audioSource;
 
-    private Animator anim;       
+    [HideInInspector]
+    public Animator anim;       
     
     [HideInInspector]
     public int HP;
@@ -55,7 +57,10 @@ public class PlayerControl : MonoBehaviour
     public bool isHurt = false;
 
     [HideInInspector]
-    public bool isEnding = false;
+    public bool isDead = false;
+
+    [HideInInspector]
+    public bool isPassLevel = false;
 
     [HideInInspector]
     public bool isPlayHurtAnim = false;
@@ -64,7 +69,7 @@ public class PlayerControl : MonoBehaviour
     public bool isLadderTop = false;
 
     private bool isFacingRight = true;
-
+   
     private Transform groundCheck;
     private readonly float groundRadius = 0.1f;
     private Transform ladderCheck;
@@ -78,7 +83,7 @@ public class PlayerControl : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         groundCheck = transform.Find("GroundCheck");
-        ladderCheck = transform.Find("LadderCheck");        
+        ladderCheck = transform.Find("LadderCheck");
     }
 
     private void Start()
@@ -97,7 +102,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("isClimb", isClimb);
         anim.SetBool("isLadderTop", isLadderTop);
         anim.SetBool("isCrouch", isCrouch);
-        anim.SetBool("isEnding", isEnding);
+        anim.SetBool("isEnding", isPassLevel);
     }
 
     //Check is Grounded or not in generally
@@ -224,33 +229,51 @@ public class PlayerControl : MonoBehaviour
         GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
         isFacingRight = !isFacingRight;
     }
-
-    //Player's hurt Animation with Coroutine
-    //Player can't hurt when the hurt Animation play
-    public IEnumerator HurtAnim()
-    {
-        Vector4 color = GetComponent<SpriteRenderer>().color;
-        for (int i = 0; i < 20; i++)
-        {
-            if (i % 2 == 0)
-                color.w = 0f;
-            else
-                color.w = 1f;
-
-            GetComponent<SpriteRenderer>().color = color;
-            yield return new WaitForSeconds(0.2f);
-        }
-       
-        StopCoroutine(HurtAnim());
-
-        isPlayHurtAnim = false;        
-    }
-
+   
     public void OnPassLevel()
     {
         rgd2D.velocity = Vector2.zero;
         anim.SetFloat("SpeedX", 0);
         anim.SetFloat("SpeedY", 0);
         rgd2D.constraints |= RigidbodyConstraints2D.FreezePositionX;
+    }
+
+    public void OnPlayerBeHurt_Player()
+    {
+        HP--;
+        isPlayHurtAnim = true;
+        isHurt = false;
+        StartCoroutine(HurtAnim());
+    }
+
+    //Player's hurt Animation with Coroutine
+    //Player can't hurt when the hurt Animation play
+    public IEnumerator HurtAnim()
+    {
+        Vector4 tempColor = GetComponent<SpriteRenderer>().color;
+        for (int i = 0; i < 20; i++)
+        {
+            if (i % 2 == 0)
+                tempColor.w = 0.3f;
+            else
+                tempColor.w = 1f;
+
+            GetComponent<SpriteRenderer>().color = tempColor;
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        StopCoroutine(HurtAnim());
+
+        isPlayHurtAnim = false;
+    }
+
+    public void OnPlayerBeDead()
+    {
+        ctrl.audioManager.Play(ctrl.audioManager.dead, audioSource);
+        isDead = true;
+        StopAllCoroutines();
+        Vector4 tempColor = GetComponent<SpriteRenderer>().color;
+        GetComponent<SpriteRenderer>().color = new Vector4(tempColor.x,tempColor.y,tempColor.z,1);
+        anim.SetLayerWeight(1, 1);
     }
 }

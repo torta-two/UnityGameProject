@@ -35,7 +35,7 @@ public class PlayerIdleState : State<PlayerControl>
 
         #region change state
 
-        if (!owner.isEnding)
+        if (!owner.isPassLevel)
         {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             {

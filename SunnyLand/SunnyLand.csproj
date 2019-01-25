@@ -310,6 +310,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DeathPanel.cs" />
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Script\0_Scene_Start&amp;Level\MapMove.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\AudioManager.cs" />
@@ -320,6 +321,7 @@
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerClimbState.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerControl.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerCrouchState.cs" />
+    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerDeadState.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerGlobalState.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerIdleState.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerJumpState.cs" />

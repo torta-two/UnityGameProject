@@ -15,7 +15,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip specialCoin;
     public AudioClip passLevel;
     public AudioClip GetStar;
-    public AudioClip GetScore;
 
     private float volume = 1;
     private float firstVolume;

@@ -15,7 +15,7 @@ MonoBehaviour:
   price: 1888
   isPurchase: 1
   isSelect: 1
-  maxHP: 4
+  maxHP: 1
   maxSpeed: 6
   jumpForce: 900
   crouchSpeedFactor: 1

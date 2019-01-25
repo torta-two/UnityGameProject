@@ -1,4 +1,6 @@
-﻿public class PlayerGlobalState : State<PlayerControl>
+﻿using UnityEngine;
+
+public class PlayerGlobalState : State<PlayerControl>
 {
     private static PlayerGlobalState _instance;
     public static PlayerGlobalState Instance
@@ -23,17 +25,20 @@
 
     public override void Execute()
     {
-        if (!owner.isPlayHurtAnim && owner.isHurt == true)
+        if (!owner.isPlayHurtAnim && owner.isHurt)
         {
-            owner.HP--;
-            owner.isPlayHurtAnim = true;
-            owner.isHurt = false;
-            owner.StartCoroutine(owner.HurtAnim());
+            owner.OnPlayerBeHurt_Player();
         }
 
-        if(owner.isEnding)
+        if(owner.isPassLevel)
         {
+            owner.OnPassLevel();
+        }
 
+        if(owner.HP <= 0)
+        {
+            if(owner.StateMachine.CurrentState != PlayerDeadState.Instance)
+                owner.StateMachine.ChangeState(PlayerDeadState.Instance);
         }
     }
 

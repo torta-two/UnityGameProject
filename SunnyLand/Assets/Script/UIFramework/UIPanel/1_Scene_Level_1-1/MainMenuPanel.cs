@@ -26,7 +26,7 @@ public class MainMenuPanel : BasePanel
         score = transform.Find("ScorePanel/Score").GetComponent<Text>();
         score.text = 0.ToString();
 
-        ctrl.OnPlayerBeHurt += OnPlayerBehurt;
+        ctrl.OnPlayerBeHurtForUI += OnPlayerBehurt_UI;
         ctrl.model.OnScoreChange += OnScoreChange;
     }
 
@@ -50,9 +50,9 @@ public class MainMenuPanel : BasePanel
         this.score.text = score.ToString();
     }
 
-    private void OnPlayerBehurt()
+    private void OnPlayerBehurt_UI()
     {
-        if (ctrl.loseHearts >= 0 && ctrl.loseHearts < hearts.Length - 1)
+        if (ctrl.loseHearts >= 0 && ctrl.loseHearts < hearts.Length)
         {
             hearts[ctrl.loseHearts].gameObject.SetActive(false);
         }

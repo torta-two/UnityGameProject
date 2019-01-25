@@ -19,7 +19,8 @@ public class UIPanelInfo : ScriptableObject
         EndingPanel,
         BalancePanel,
         ExitWarningPanel,
-        ReturnWarningPanel
+        ReturnWarningPanel,
+        DeathPanel
     }
 
     public List<GameObject> prefabList = new List<GameObject>();

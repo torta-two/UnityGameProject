@@ -27,7 +27,7 @@ public class Ctrl : MonoBehaviour
     [HideInInspector]
     public UIManager UIManager;
 
-    public event Action OnPlayerBeHurt;
+    public event Action OnPlayerBeHurtForUI;
 
     private List<Enemy> enemies = new List<Enemy>();
     private List<Coin> coins = new List<Coin>();
@@ -55,78 +55,97 @@ public class Ctrl : MonoBehaviour
         Enemy deadEnemy = null;
         Coin deadReward = null;
 
-        if (player.HP == 0)
-        {
-
-        }
-
-        if (player.isEnding)
+        if (player.isPassLevel)
         {
             if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
             {
-                player.GetComponent<PlayerControl>().OnPassLevel();
                 UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
                 UIManager.PushPanel(UIPanelInfo.PanelType.BalancePanel);
                 model.SaveScore();
 
-                audioManager.Play(audioManager.passLevel, player.audioSource);              
+                audioManager.Play(audioManager.passLevel, player.audioSource);
             }
         }
 
-        #region check dead enemy and hurt player
-
-        foreach (var enemy in enemies)
+        if (player.isDead)
         {
-            deadEnemy = enemy.CheckDeadEnemy();
-
-            if(enemy.CheckPlayBeHurt(player))
+            if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
             {
-                if(OnPlayerBeHurt != null)
-                    OnPlayerBeHurt();
-            }
+                UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
 
-            if (deadEnemy != null)
-            {                
-                break;
+                foreach (var item in enemies)
+                    item.enabled = false;
+
+                StartCoroutine(DelayInvokePushPanel(UIPanelInfo.PanelType.DeathPanel, 3));
+                    
             }
         }
-
-        if (deadEnemy != null)
+        else
         {
-            model.GetScore(deadEnemy.tag);
-            deadEnemy.OnEnemyDead();
+            #region check dead enemy and hurt player
 
-            enemies.Remove(deadEnemy);
-        }
-
-        #endregion
-
-
-        #region check reward
-
-        foreach (var coin in coins)
-        {
-            if (coin.checkCoin)
+            foreach (var enemy in enemies)
             {
-                deadReward = coin;
-                if (deadReward != null)
-                {                   
+                deadEnemy = enemy.CheckDeadEnemy();
+
+                if (enemy.CheckPlayBeHurt(player))
+                {
+                    if (OnPlayerBeHurtForUI != null)
+                        OnPlayerBeHurtForUI();
+                }
+
+                if (deadEnemy != null)
+                {
                     break;
                 }
             }
+
+            if (deadEnemy != null)
+            {
+                model.GetScore(deadEnemy.tag);
+                deadEnemy.OnEnemyDead();
+
+                enemies.Remove(deadEnemy);
+            }
+
+            #endregion
+
+
+            #region check reward
+
+            foreach (var coin in coins)
+            {
+                if (coin.checkCoin)
+                {
+                    deadReward = coin;
+                    if (deadReward != null)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (deadReward != null)
+            {
+                audioManager.Play(audioManager.commonCoin, deadReward.GetComponent<AudioSource>());
+                model.GetScore(deadReward.tag);
+                deadReward.OnGetCoins();
+
+                coins.Remove(deadReward);
+            }
+
+            #endregion
         }
+    }
 
-        if (deadReward != null)
-        {
-            audioManager.Play(audioManager.commonCoin, deadReward.GetComponent<AudioSource>());
-            model.GetScore(deadReward.tag);
-            deadReward.OnGetCoins();
 
-            coins.Remove(deadReward);
-        }
+    private IEnumerator DelayInvokePushPanel(UIPanelInfo.PanelType type , int delayTime)
+    {
+        for (int i = 0; i < delayTime; i++)
+            yield return new WaitForSeconds(1);
 
-        #endregion
-
+        UIManager.PushPanel(type);
+        StopCoroutine(DelayInvokePushPanel(type , delayTime));
     }
 
 }

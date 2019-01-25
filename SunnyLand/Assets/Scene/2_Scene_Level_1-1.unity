@@ -699,7 +699,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -802,12 +802,11 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: b98ba560e2745034bbb628222ec27290, type: 3}
   attack: {fileID: 8300000, guid: 24512ee4aa7451745974b27c89028038, type: 3}
   hurt: {fileID: 8300000, guid: 07567da68f13c214e85d48c4b34b6f66, type: 3}
-  dead: {fileID: 0}
+  dead: {fileID: 8300000, guid: b7f9fca9f376faf4ab922650f03df2e6, type: 3}
   commonCoin: {fileID: 8300000, guid: a09d61446ebc31548a51312b20737125, type: 3}
   specialCoin: {fileID: 8300000, guid: a09d61446ebc31548a51312b20737125, type: 3}
   passLevel: {fileID: 8300000, guid: 4de4223bc63281046a8063aa4d62c011, type: 3}
   GetStar: {fileID: 8300000, guid: fb87d002b125fab4cbb1fefc8e142c1e, type: 3}
-  GetScore: {fileID: 0}
 --- !u!114 &341149057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,6 +1379,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1964402460314882, guid: 6479fa012a60c684abf7b8a4db6446b7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6479fa012a60c684abf7b8a4db6446b7, type: 2}
   m_IsPrefabParent: 0
@@ -1721,7 +1724,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1964402460314882, guid: 41f1933010db2bf4298696c6ff6a6655, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41f1933010db2bf4298696c6ff6a6655, type: 2}
@@ -4718,7 +4721,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.16
   m_Pitch: 1
   Loop: 0
   Mute: 0
