@@ -7,7 +7,7 @@ public class DeathPanel : BasePanel
 {
     public void OnClickRestartButton()
     {
-        SceneManager.LoadScene(ctrl.model.levelIndex + 1);
+        SceneManager.LoadScene(ctrl.gameRecord.levelIndex + 1);
     }
 
     public void OnClickReturnButton()

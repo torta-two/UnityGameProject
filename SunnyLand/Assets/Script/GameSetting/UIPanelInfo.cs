@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,8 +24,6 @@ public class UIPanelInfo : ScriptableObject
 
     public List<GameObject> prefabList = new List<GameObject>();
     public List<PanelType> typeList = new List<PanelType>();
-    public List<PlayerControl> playerList = new List<PlayerControl>();
-
     public Dictionary<PanelType, GameObject> panelDict = new Dictionary<PanelType, GameObject>();
 
     private void OnEnable()

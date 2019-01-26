@@ -2,19 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Ctrl : MonoBehaviour
 {
-    [HideInInspector]
-    public float volume = 1;
-
-    [HideInInspector]
-    public int loseHearts = 0;
-
-    [HideInInspector]
-    public PlayerControl player;
-    
     [HideInInspector]
     public Model model;
 
@@ -24,11 +14,19 @@ public class Ctrl : MonoBehaviour
     [HideInInspector]
     public AudioSource audioSource;
 
-    private InitializeUI initializeUI;
+    [HideInInspector]
+    public PlayerControl player;
+
+    [HideInInspector]
+    public int loseHearts = 0;
 
     [HideInInspector]
     public UIManager UIManager;
 
+    [HideInInspector]
+    public GameRecordInfo gameRecord;
+   
+    [HideInInspector]
     public event Action OnPlayerBeHurtForUI;
 
     private List<Enemy> enemies = new List<Enemy>();
@@ -37,20 +35,9 @@ public class Ctrl : MonoBehaviour
     private void Awake()
     {
         audioManager = GetComponent<AudioManager>();
-        audioSource = GetComponent<AudioSource>();
-        initializeUI = GetComponent<InitializeUI>();        
-
-        Transform PlayerTrans = transform.Find("PlayerTrans");
-
-        foreach (var item in initializeUI.panelInfo.playerList)
-        {
-            if(item.playerInfo.isSelect)
-            {
-                player = Instantiate(item, PlayerTrans.position, Quaternion.identity,transform);
-            }
-        }
-
-        UIManager = initializeUI.UIManager;
+        audioSource = GetComponent<AudioSource>();     
+        UIManager = GetComponent<GameRoot>().UIManager;
+        gameRecord = GetComponent<GameRoot>().gameRecord;
 
         model = FindObjectOfType<Model>();
 
@@ -59,6 +46,16 @@ public class Ctrl : MonoBehaviour
         
         enemies.CopyFrom(emys);
         coins.CopyFrom(cons);
+
+        Transform PlayerTrans = transform.Find("PlayerTrans");
+
+        foreach (var item in model.gameRecord.playerPrefabList)
+        {
+            if (item.playerInfo.isSelect)
+            {
+                player = Instantiate(item, PlayerTrans.position, Quaternion.identity, transform);
+            }
+        }
     }
 
     private void Update()
@@ -68,6 +65,7 @@ public class Ctrl : MonoBehaviour
         Enemy deadEnemy = null;
         Coin deadReward = null;
 
+        //通关，保存记录
         if (player.isPassLevel)
         {
             if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
@@ -80,6 +78,7 @@ public class Ctrl : MonoBehaviour
             }
         }
 
+        //死亡
         if (player.isDead)
         {
             if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
@@ -89,8 +88,7 @@ public class Ctrl : MonoBehaviour
                 foreach (var item in enemies)
                     item.enabled = false;
 
-                StartCoroutine(DelayInvokePushPanel(UIPanelInfo.PanelType.DeathPanel, 3));
-                    
+                StartCoroutine(DelayInvokePushPanel(UIPanelInfo.PanelType.DeathPanel, 3));                    
             }
         }
         else

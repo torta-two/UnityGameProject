@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class EndingPanel : BasePanel
+﻿public class EndingPanel : BasePanel
 {
     private void Update()
     {

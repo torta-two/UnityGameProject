@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 
 public class TaskPanel : BasePanel
 {
-    public GameRecordInfo gameRecord;
-
     [HideInInspector]
     public Transform taskGroup; 
 
@@ -14,8 +11,8 @@ public class TaskPanel : BasePanel
     protected override void Awake()
     {
         base.Awake();
-        taskGroup = transform.Find("TaskScroll/TaskGroup");
-       
+
+        taskGroup = transform.Find("TaskScroll/TaskGroup");       
         rectTransform = GetComponent<RectTransform>();
     }
 

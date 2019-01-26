@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2338c29817b14d74eb27110e7c9a5959
+timeCreated: 1547281875
+licenseType: Pro
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - panelInfo: {instanceID: 0}
+  - gameRecord: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

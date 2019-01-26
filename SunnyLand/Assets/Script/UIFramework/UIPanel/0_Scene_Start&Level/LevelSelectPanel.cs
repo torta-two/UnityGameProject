@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 public class LevelSelectPanel : BasePanel
 {
     private LevelSelectButton[] levelButtons;
@@ -17,9 +14,9 @@ public class LevelSelectPanel : BasePanel
     {
         foreach (var item in levelButtons)
         {
-            if (item.levelIndex < item.gameRecordInfo.beingPassedLevel)
+            if (item.levelIndex < gameRecord.beingPassedLevel)
             {
-                int specialCoin = item.gameRecordInfo.specialCoins[item.levelIndex - 1];
+                int specialCoin = gameRecord.specialCoin[item.levelIndex - 1];
                 for (int i = 0; i < 3; i++)
                 {
                     if (i < specialCoin)

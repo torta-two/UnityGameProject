@@ -802,12 +802,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3cffd98405998469bcf3ca24e099e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 1
-  loseHearts: 0
-  player: {fileID: 0}
   model: {fileID: 0}
   audioManager: {fileID: 0}
   audioSource: {fileID: 0}
+  player: {fileID: 0}
+  loseHearts: 0
+  gameRecord: {fileID: 0}
 --- !u!114 &341149056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainPanel: 4
   panelInfo: {fileID: 11400000, guid: 6d0655b3ceb645040afbce3afd4d21fe, type: 2}
+  gameRecord: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
 --- !u!1001 &349419329
 Prefab:
   m_ObjectHideFlags: 0

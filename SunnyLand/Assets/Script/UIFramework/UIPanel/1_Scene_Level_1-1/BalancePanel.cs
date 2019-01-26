@@ -96,13 +96,16 @@ public class BalancePanel : BasePanel
 
     public void OnClickRestartButton()
     {
-        ctrl.model.levelIndex--;
-        SceneManager.LoadScene(ctrl.model.levelIndex + 1);
+        SceneManager.LoadScene(ctrl.gameRecord.levelIndex + 1);
+        ctrl.model.LoadScore();
     }
 
     public void OnClickNextLevelButton()
     {
-        SceneManager.LoadScene(ctrl.model.levelIndex + 1);
+        if(ctrl.gameRecord.levelIndex<2)
+            ctrl.gameRecord.levelIndex++;
+        SceneManager.LoadScene(ctrl.gameRecord.levelIndex + 1);
+        ctrl.model.LoadScore();
     }
 
     #endregion

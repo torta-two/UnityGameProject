@@ -1,12 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
 public class StorePanel : BasePanel
 {
-    public GameRecordInfo gameRecord;
     public AudioClip clip;
 
     [HideInInspector]
@@ -15,13 +13,14 @@ public class StorePanel : BasePanel
     [HideInInspector]
     public AudioSource source;
 
-    public SelectPlayer[] selectPlayers;
-
+    [HideInInspector]
+    private SelectPlayer[] selectPlayers;
     private RectTransform rectTransform;
 
     protected override void Awake()
     {
         base.Awake();
+        
         rectTransform = GetComponent<RectTransform>();
         moneyText = transform.Find("MoneyPanel/Money").GetComponent<Text>();
         moneyText.text = gameRecord.money.ToString();

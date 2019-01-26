@@ -5,19 +5,34 @@ using DG.Tweening;
 [RequireComponent(typeof(CanvasGroup))]
 public class BasePanel : MonoBehaviour
 {
-    protected Ctrl ctrl;
-
     [HideInInspector]
     public CanvasGroup canvasGroup;
-    protected Button closeButton;   
+
+    [HideInInspector ]
+    public GameRecordInfo gameRecord;
+
+    protected Button closeButton;
+    protected Ctrl ctrl;       
     protected UIManager UIManager;
 
     protected virtual void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        closeButton = FindCloseButton("CloseButton");        
-        ctrl = FindObjectOfType<Ctrl>();
-        UIManager = FindObjectOfType<InitializeUI>().UIManager;
+        
+        closeButton = FindCloseButton("CloseButton");
+        ctrl = FindObjectOfType<Ctrl>();       
+
+        if (ctrl != null)
+        {
+            gameRecord = ctrl.gameRecord;
+            UIManager = ctrl.UIManager;
+        }
+        else
+        {
+            gameRecord = FindObjectOfType<GameRoot>().gameRecord;
+            UIManager = FindObjectOfType<GameRoot>().UIManager;
+        }
+
 
         if (closeButton != null)
         {

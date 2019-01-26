@@ -2513,7 +2513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
   levelIndex: 4
   specialCoin: []
 --- !u!114 &114304095919201670
@@ -2527,7 +2526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
   levelIndex: 5
   specialCoin: []
 --- !u!114 &114312551567900090
@@ -2676,7 +2674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
   levelIndex: 3
   specialCoin: []
 --- !u!114 &114375392112982424
@@ -3048,7 +3045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
   levelIndex: 2
   specialCoin: []
 --- !u!114 &114596919622864504
@@ -3074,7 +3070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
   levelIndex: 6
   specialCoin: []
 --- !u!114 &114599547615068076
@@ -3267,6 +3262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb36471a17fc924a8ff26afae959c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  gameRecord: {fileID: 0}
 --- !u!114 &114660975692480654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3645,7 +3642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRecordInfo: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
   levelIndex: 1
   specialCoin:
   - {fileID: 0}

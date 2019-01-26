@@ -15,13 +15,13 @@ public class UIManager
         }
     }
 
-    private InitializeUI _uiRoot;
-    public InitializeUI UIRoot
+    private GameRoot _uiRoot;
+    public GameRoot UIRoot
     {
         get
         {
             if (_uiRoot == null)
-                _uiRoot = UnityEngine.Object.FindObjectOfType<InitializeUI>();
+                _uiRoot = UnityEngine.Object.FindObjectOfType<GameRoot>();
             return _uiRoot;
         }
     }

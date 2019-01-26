@@ -2,8 +2,7 @@
 using UnityEngine.SceneManagement;
 
 public class LevelSelectButton : MonoBehaviour
-{
-    public GameRecordInfo gameRecordInfo;
+{    
     public int levelIndex = 1;    
 
     private Transform outline;
@@ -13,6 +12,9 @@ public class LevelSelectButton : MonoBehaviour
     private Transform specialCoinPanel;
     [HideInInspector]
     public Transform[] specialCoin;
+
+    private LevelSelectPanel levelSelectPanel;
+    private GameRecordInfo gameRecord;
 
     private float radian = 0; //漂浮动画弧度增量
 
@@ -24,11 +26,14 @@ public class LevelSelectButton : MonoBehaviour
         playerImage = transform.Find("Player");
         specialCoinPanel = transform.Find("SpecialCoin");
 
-        if (gameRecordInfo.beingPassedLevel > levelIndex)
+        levelSelectPanel = FindObjectOfType<LevelSelectPanel>();
+        gameRecord = levelSelectPanel.gameRecord;
+
+        if (gameRecord.beingPassedLevel > levelIndex)
         {
             SetUIActive(outline_Passed: true, specialCoinPanel: true);
         }
-        else if (gameRecordInfo.beingPassedLevel == levelIndex)
+        else if (gameRecord.beingPassedLevel == levelIndex)
         {
             SetUIActive(outline: true, player: true);
         }
@@ -39,12 +44,14 @@ public class LevelSelectButton : MonoBehaviour
 
         specialCoin = new Transform[3];
         for (int i = 1; i <= 3; i++)
+        {
             specialCoin[i - 1] = specialCoinPanel.Find(i.ToString());
+        }
     }
 
     private void Update()
     {
-        if (gameRecordInfo.beingPassedLevel == levelIndex)
+        if (gameRecord.beingPassedLevel == levelIndex)
         {
             OutlineAnim();
         }
@@ -82,8 +89,8 @@ public class LevelSelectButton : MonoBehaviour
 
     public void OnLevelSelectButtonClick()
     {
-        gameRecordInfo.levelIndex = levelIndex;
-        if(levelIndex <= gameRecordInfo.beingPassedLevel)
+        gameRecord.levelIndex = levelIndex;
+        if(levelIndex <= gameRecord.beingPassedLevel)
         {
             SceneManager.LoadScene(levelIndex + 1);
         }
