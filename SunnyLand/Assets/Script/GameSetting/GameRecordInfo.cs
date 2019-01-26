@@ -11,6 +11,10 @@ public class GameRecordInfo : ScriptableObject
     public List<int> specialCoins = new List<int>();
     public List<int> maxScores = new List<int>();
     public int money = 0;
+    public int killMonster = 0;
+    public int GetCoin = 0;
+
+    public List<bool> taskState = new List<bool>();
 
     public void Load()
     {

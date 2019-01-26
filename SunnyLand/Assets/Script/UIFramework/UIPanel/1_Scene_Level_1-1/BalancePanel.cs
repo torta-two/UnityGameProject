@@ -31,7 +31,7 @@ public class BalancePanel : BasePanel
     private void OnBalance(int score, int specialCoin)
     {
         StartCoroutine(ScoreAnim(score, this.score));
-        StartCoroutine(ScoreAnim(score * 3, reward, true));
+        StartCoroutine(ScoreAnim(score, reward, true));
         StartCoroutine(StarAnim(specialCoin));
     }
 
@@ -48,7 +48,7 @@ public class BalancePanel : BasePanel
 
         if (isStartMoneyAnim)
         {
-            StartCoroutine(MoneyAnim(score));
+            StartCoroutine(MoneyAnim(score/10));
         }
 
         StopCoroutine(ScoreAnim(score, text));
@@ -56,9 +56,9 @@ public class BalancePanel : BasePanel
 
     private IEnumerator MoneyAnim(int addMoney)
     {
-        for (int i = 1; i <= addMoney; i += 10)
+        for (int i = 1; i <= addMoney; i += 1)
         {
-            ctrl.model.gameRecord.money += 10;
+            ctrl.model.gameRecord.money += 1;
             money.text = ctrl.model.gameRecord.money.ToString();
             yield return new WaitForSeconds(0.01f);
         }

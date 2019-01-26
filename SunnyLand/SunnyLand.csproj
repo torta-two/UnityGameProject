@@ -355,6 +355,7 @@
     <Compile Include="Assets\Script\UIFramework\UIScript\LevelSelectButton.cs" />
     <Compile Include="Assets\Script\UIFramework\UIScript\LevelSelectDrag.cs" />
     <Compile Include="Assets\Script\UIFramework\UIScript\SelectPlayer.cs" />
+    <Compile Include="Assets\Task.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />

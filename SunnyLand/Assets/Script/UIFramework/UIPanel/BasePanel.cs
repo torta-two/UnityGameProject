@@ -7,31 +7,27 @@ public class BasePanel : MonoBehaviour
 {
     protected Ctrl ctrl;
 
+    [HideInInspector]
     public CanvasGroup canvasGroup;
-    protected Button btn;
+    protected Button closeButton;   
     protected UIManager UIManager;
 
     protected virtual void Awake()
     {
-        btn = FindCloseButton("CloseButton");
         canvasGroup = GetComponent<CanvasGroup>();
+        closeButton = FindCloseButton("CloseButton");        
         ctrl = FindObjectOfType<Ctrl>();
         UIManager = FindObjectOfType<InitializeUI>().UIManager;
 
-        if (btn != null)
+        if (closeButton != null)
         {
-            btn.onClick.AddListener(UIManager.PopPanel);
+            closeButton.onClick.AddListener(UIManager.PopPanel);
         }
 
         if (canvasGroup == null)
         {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
         }
-    }
-
-    private void Start()
-    {
-        
     }
 
     private Button FindCloseButton(string childName)

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,6 +11,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip specialCoin;
     public AudioClip passLevel;
     public AudioClip GetStar;
+    public AudioClip ClickButton;
+    public AudioClip EnterButton;
 
     [HideInInspector]
     public float bgmVolume = 0.6f;

@@ -3,7 +3,8 @@
 public class InitializeUI : MonoBehaviour
 {
     public UIPanelInfo.PanelType mainPanel;
-    public UIPanelInfo panelInfo;   
+    public UIPanelInfo panelInfo;
+    public GameRecordInfo gameRecord;
 
     private UIManager _uiManager;
     [HideInInspector]

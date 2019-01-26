@@ -58,23 +58,26 @@ public class Model : MonoBehaviour
         {
             case "CommonCoin":
                 {
-                    score += 20;
+                    score += 10;
                 }
                 break;
             case "SpecialCoin":
                 {
-                    score += 100;
+                    score += 50;
                     specialCoin++;
+                    gameRecord.GetCoin++;
                 }
                 break;
             case "CommonEnemy":
                 {
-                    score += 50;
+                    score += 10;
+                    gameRecord.killMonster++;
                 }
                 break;
             case "SpecialEnemy":
                 {
                     score += 100;
+                    gameRecord.killMonster++;
                 }
                 break;
             default: break;
