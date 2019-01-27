@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e39bb51a04de3143b23b356ce3864e2, type: 3}
   m_Name: GameRecordInfo
   m_EditorClassIdentifier: 
-  beingPassedLevel: 1
+  beingPassedLevel: 2
   levelIndex: 1
-  money: 0
-  killMonster: 0
-  GetCoin: 0
-  specialCoin: 
-  maxScore: 
+  money: 14
+  killMonster: 1
+  getCoin: 2
+  specialCoin: 02000000
+  maxScore: 8c000000
   playerPrefabList:
   - {fileID: 114663902782609368, guid: 6479fa012a60c684abf7b8a4db6446b7, type: 2}
   - {fileID: 114791708812174134, guid: 41f1933010db2bf4298696c6ff6a6655, type: 2}

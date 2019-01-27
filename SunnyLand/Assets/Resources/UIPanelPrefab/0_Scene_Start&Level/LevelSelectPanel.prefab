@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114597413492311456}
+      - m_Target: {fileID: 1932800529689946}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -2193,7 +2193,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114301540322950646}
+      - m_Target: {fileID: 1432877388270714}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -2287,7 +2287,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114583558845918310}
-        m_MethodName: OnLevelSelectButtonClick
+        m_MethodName: OnClickLevelSelectButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 4
+  buttonLevelIndex: 4
   specialCoin: []
 --- !u!114 &114304095919201670
 MonoBehaviour:
@@ -2526,7 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 5
+  buttonLevelIndex: 5
   specialCoin: []
 --- !u!114 &114312551567900090
 MonoBehaviour:
@@ -2674,7 +2674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 3
+  buttonLevelIndex: 3
   specialCoin: []
 --- !u!114 &114375392112982424
 MonoBehaviour:
@@ -2815,7 +2815,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114741524634037724}
-        m_MethodName: OnLevelSelectButtonClick
+        m_MethodName: OnClickLevelSelectButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3045,7 +3045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 2
+  buttonLevelIndex: 2
   specialCoin: []
 --- !u!114 &114596919622864504
 MonoBehaviour:
@@ -3070,7 +3070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 6
+  buttonLevelIndex: 6
   specialCoin: []
 --- !u!114 &114599547615068076
 MonoBehaviour:
@@ -3111,7 +3111,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114304095919201670}
+      - m_Target: {fileID: 1574325625624218}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -3642,7 +3642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff758251c5634b4b9ddd8df3ec8a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 1
+  buttonLevelIndex: 1
   specialCoin:
   - {fileID: 0}
   - {fileID: 0}
@@ -3821,7 +3821,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114350774890658512}
+      - m_Target: {fileID: 1206779165810680}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:

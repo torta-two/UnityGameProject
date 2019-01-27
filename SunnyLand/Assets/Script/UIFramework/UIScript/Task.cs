@@ -56,7 +56,7 @@ public class Task : MonoBehaviour
             if (isMonsterTask)
                 currentAmountText.text = taskPanel.gameRecord.killMonster.ToString();
             else
-                currentAmountText.text = taskPanel.gameRecord.GetCoin.ToString();
+                currentAmountText.text = taskPanel.gameRecord.getCoin.ToString();
             currentAmount = Convert.ToInt32(currentAmountText.text);
         }
     }

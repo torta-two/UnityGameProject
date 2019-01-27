@@ -2,8 +2,8 @@
 using UnityEngine.SceneManagement;
 
 public class LevelSelectButton : MonoBehaviour
-{    
-    public int levelIndex = 1;    
+{
+    public int buttonLevelIndex = 1;
 
     private Transform outline;
     private Transform outline_Passed;
@@ -29,18 +29,25 @@ public class LevelSelectButton : MonoBehaviour
         levelSelectPanel = FindObjectOfType<LevelSelectPanel>();
         gameRecord = levelSelectPanel.gameRecord;
 
-        if (gameRecord.beingPassedLevel > levelIndex)
+        if (gameRecord.beingPassedLevel > buttonLevelIndex)
         {
-            SetUIActive(outline_Passed: true, specialCoinPanel: true);
+            if (gameRecord.levelIndex == buttonLevelIndex)
+                SetUIActive(outline_Passed: true, specialCoinPanel: true, player: true);
+            else
+                SetUIActive(outline_Passed: true, specialCoinPanel: true);
         }
-        else if (gameRecord.beingPassedLevel == levelIndex)
+        else if (gameRecord.beingPassedLevel == buttonLevelIndex)
         {
-            SetUIActive(outline: true, player: true);
+            if (gameRecord.levelIndex == buttonLevelIndex)
+                SetUIActive(outline: true, player: true);
+            else
+                SetUIActive(outline: true);
         }
         else
         {
             SetUIActive(lockPanel: true);
         }
+
 
         specialCoin = new Transform[3];
         for (int i = 1; i <= 3; i++)
@@ -51,48 +58,49 @@ public class LevelSelectButton : MonoBehaviour
 
     private void Update()
     {
-        if (gameRecord.beingPassedLevel == levelIndex)
+        if (gameRecord.beingPassedLevel == buttonLevelIndex)
         {
             OutlineAnim();
         }
-        ButtonAnim();        
+        ButtonAnim();
     }
-    
+
     private void OutlineAnim()
-    {    
-        if(outline.gameObject.activeSelf == true)
+    {
+        if (outline.gameObject.activeSelf == true)
         {
             Transform temp = outline.transform;
             temp.transform.Rotate(Vector3.back, Time.deltaTime * 15f);
             outline.transform.rotation = temp.rotation;
-        }       
+        }
     }
 
     private void ButtonAnim()
     {
         Vector3 temp = transform.localPosition;
-        
+
         radian += 1f * Time.deltaTime;
-        temp.y = Mathf.Sin(radian + levelIndex) * 20f;
+        temp.y = Mathf.Sin(radian + buttonLevelIndex) * 20f;
 
         transform.localPosition = temp;
     }
 
-    private void SetUIActive(bool outline = false,bool outline_Passed = false, bool lockPanel = false, bool player = false, bool specialCoinPanel = false)
+    private void SetUIActive(bool outline = false, bool outline_Passed = false, bool lockPanel = false, bool player = false, bool specialCoinPanel = false)
     {
         this.outline.gameObject.SetActive(outline);
         this.outline_Passed.gameObject.SetActive(outline_Passed);
         this.lockPanel.gameObject.SetActive(lockPanel);
-        this.playerImage.gameObject.SetActive(player);
+        playerImage.gameObject.SetActive(player);
         this.specialCoinPanel.gameObject.SetActive(specialCoinPanel);
     }
 
-    public void OnLevelSelectButtonClick()
-    {
-        gameRecord.levelIndex = levelIndex;
-        if(levelIndex <= gameRecord.beingPassedLevel)
+    public void OnClickLevelSelectButton()
+    {       
+        if (buttonLevelIndex <= gameRecord.beingPassedLevel)
         {
-            SceneManager.LoadScene(levelIndex + 1);
+            gameRecord.levelIndex = buttonLevelIndex;
+            gameRecord.Save();
+            SceneManager.LoadScene(buttonLevelIndex + 1);
         }
     }
 }

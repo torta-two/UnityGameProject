@@ -14,9 +14,9 @@ public class LevelSelectPanel : BasePanel
     {
         foreach (var item in levelButtons)
         {
-            if (item.levelIndex < gameRecord.beingPassedLevel)
+            if (item.buttonLevelIndex < gameRecord.beingPassedLevel)
             {
-                int specialCoin = gameRecord.specialCoin[item.levelIndex - 1];
+                int specialCoin = gameRecord.specialCoin[item.buttonLevelIndex - 1];
                 for (int i = 0; i < 3; i++)
                 {
                     if (i < specialCoin)
@@ -40,5 +40,10 @@ public class LevelSelectPanel : BasePanel
     public void OnClickTaskButton()
     {
         UIManager.PushPanel(UIPanelInfo.PanelType.TaskPanel);
+    }
+
+    private void OnApplicationQuit()
+    {
+        gameRecord.Save();
     }
 }

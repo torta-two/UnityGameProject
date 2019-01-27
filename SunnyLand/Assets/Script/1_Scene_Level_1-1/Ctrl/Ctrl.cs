@@ -159,4 +159,13 @@ public class Ctrl : MonoBehaviour
         StopCoroutine(DelayInvokePushPanel(type , delayTime));
     }
 
+
+    private void OnApplicationQuit()
+    {
+        if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.ExitWarningPanel, true))
+        {
+            Application.CancelQuit();
+            UIManager.PushPanel(UIPanelInfo.PanelType.ExitWarningPanel);
+        }
+    }
 }

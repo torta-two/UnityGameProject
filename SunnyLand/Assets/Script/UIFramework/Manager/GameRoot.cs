@@ -23,16 +23,8 @@ public class GameRoot : MonoBehaviour
 
     private void Awake()
     {
+        gameRecord = GameRecordInfo.Instance;
         UIManager.PushPanel(mainPanel);
     }
 
-
-    private void OnApplicationQuit()
-    {
-        if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.ExitWarningPanel,true))
-        {            
-            Application.CancelQuit();
-            UIManager.PushPanel(UIPanelInfo.PanelType.ExitWarningPanel);
-        }                
-    }
 }

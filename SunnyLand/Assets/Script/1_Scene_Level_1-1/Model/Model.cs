@@ -15,7 +15,11 @@ public class Model : MonoBehaviour
 
     private void Awake()
     {
-        gameRecord = FindObjectOfType<GameRoot>().gameRecord;
+        gameRecord = FindObjectOfType<GameRoot>().gameRecord;        
+    }
+
+    private void Start()
+    {
         LoadScore();
     }
 
@@ -33,15 +37,9 @@ public class Model : MonoBehaviour
     {
         gameRecord.Load();
 
-        //正在玩最新一关，没有记录
-        if (gameRecord.levelIndex == gameRecord.beingPassedLevel)
-        {
-            if (gameRecord.maxScore.Count < gameRecord.levelIndex)
-                gameRecord.maxScore.Add(maxScore);
-            if (gameRecord.specialCoin.Count < gameRecord.levelIndex)
-                gameRecord.specialCoin.Add(specialCoin);
-        }
-        else
+        //玩的是玩过的，有记录的关卡
+        //不包括最新一关是因为，有可能是第一次玩最新一关，记录list还没有扩容
+        if (gameRecord.levelIndex < gameRecord.beingPassedLevel)
         {
             maxScore = gameRecord.maxScore[gameRecord.levelIndex - 1];
         }
@@ -60,7 +58,7 @@ public class Model : MonoBehaviour
                 {
                     score += 50;
                     specialCoin++;
-                    gameRecord.GetCoin++;
+                    gameRecord.getCoin++;
                 }
                 break;
             case "CommonEnemy":
@@ -84,14 +82,16 @@ public class Model : MonoBehaviour
         OnBalance?.Invoke(score, specialCoin);
 
         if (gameRecord.maxScore[gameRecord.levelIndex - 1] < maxScore)
-        gameRecord.maxScore[gameRecord.levelIndex - 1] = maxScore;
+            gameRecord.maxScore[gameRecord.levelIndex - 1] = maxScore;
 
         if (gameRecord.specialCoin[gameRecord.levelIndex - 1] < specialCoin)
             gameRecord.specialCoin[gameRecord.levelIndex - 1] = specialCoin;
 
-        if(gameRecord.levelIndex == gameRecord.beingPassedLevel)
+        if (gameRecord.levelIndex == gameRecord.beingPassedLevel)
             gameRecord.beingPassedLevel++;
 
+        gameRecord.levelIndex++;
+
         gameRecord.Save();
-    }   
+    }
 }

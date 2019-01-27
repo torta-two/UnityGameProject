@@ -48,7 +48,7 @@ public class BalancePanel : BasePanel
 
         if (isStartMoneyAnim)
         {
-            StartCoroutine(MoneyAnim(score/10));
+            StartCoroutine(MoneyAnim(score / 10));
         }
 
         StopCoroutine(ScoreAnim(score, text));
@@ -58,8 +58,8 @@ public class BalancePanel : BasePanel
     {
         for (int i = 1; i <= addMoney; i += 1)
         {
-            ctrl.model.gameRecord.money += 1;
-            money.text = ctrl.model.gameRecord.money.ToString();
+            gameRecord.money += 1;
+            money.text = gameRecord.money.ToString();
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -96,16 +96,18 @@ public class BalancePanel : BasePanel
 
     public void OnClickRestartButton()
     {
-        SceneManager.LoadScene(ctrl.gameRecord.levelIndex + 1);
-        ctrl.model.LoadScore();
+        gameRecord.levelIndex--;
+        gameRecord.Save();
+
+        if(gameRecord.levelIndex <= 2)
+            SceneManager.LoadScene(gameRecord.levelIndex + 1);        
     }
 
     public void OnClickNextLevelButton()
     {
-        if(ctrl.gameRecord.levelIndex<2)
-            ctrl.gameRecord.levelIndex++;
-        SceneManager.LoadScene(ctrl.gameRecord.levelIndex + 1);
-        ctrl.model.LoadScore();
+        if (gameRecord.levelIndex <= 2)
+            SceneManager.LoadScene((gameRecord.levelIndex - 1) + 2);
+        
     }
 
     #endregion
