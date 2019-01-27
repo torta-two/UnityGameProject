@@ -23,7 +23,7 @@ public class StorePanel : BasePanel
         
         rectTransform = GetComponent<RectTransform>();
         moneyText = transform.Find("MoneyPanel/Money").GetComponent<Text>();
-        moneyText.text = gameRecord.money.ToString();
+        moneyText.text = GameRecord.Instance.money.ToString();
 
         source = GetComponent<AudioSource>();
         source.clip = clip;
@@ -36,7 +36,7 @@ public class StorePanel : BasePanel
 
     private bool OnBuyPlayer(int playerPrice)
     {        
-        if(playerPrice <= gameRecord.money)
+        if(playerPrice <= GameRecord.Instance.money)
         {
             source.Play();
             StartCoroutine(MoneyAnim(playerPrice));
@@ -49,8 +49,8 @@ public class StorePanel : BasePanel
     {
         for (int i = 0; i < lossMoney / 10; i++)
         {
-            gameRecord.money -= 10;
-            moneyText.text = gameRecord.money.ToString();
+            GameRecord.Instance.money -= 10;
+            moneyText.text = GameRecord.Instance.money.ToString();
 
             yield return new WaitForSeconds(0.01f);
         }

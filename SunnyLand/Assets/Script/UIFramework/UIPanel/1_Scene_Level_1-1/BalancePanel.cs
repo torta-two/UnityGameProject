@@ -17,7 +17,7 @@ public class BalancePanel : BasePanel
         score = transform.Find("ScorePanel/Score").GetComponent<Text>();
         reward = transform.Find("RewardPanel/Reward").GetComponent<Text>();
         money = transform.Find("MoneyPanel/Money").GetComponent<Text>();
-        money.text = ctrl.model.gameRecord.money.ToString();
+        money.text = GameRecord.Instance.money.ToString();
 
         for (int i = 0; i < star.Length; i++)
         {
@@ -25,7 +25,7 @@ public class BalancePanel : BasePanel
             star[i].gameObject.SetActive(false);
         }
 
-        ctrl.model.OnBalance += OnBalance;
+        ctrl.Model.OnBalance += OnBalance;
     }
 
     private void OnBalance(int score, int specialCoin)
@@ -58,8 +58,8 @@ public class BalancePanel : BasePanel
     {
         for (int i = 1; i <= addMoney; i += 1)
         {
-            gameRecord.money += 1;
-            money.text = gameRecord.money.ToString();
+            GameRecord.Instance.money += 1;
+            money.text = GameRecord.Instance.money.ToString();
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -96,17 +96,19 @@ public class BalancePanel : BasePanel
 
     public void OnClickRestartButton()
     {
-        gameRecord.levelIndex--;
-        gameRecord.Save();
+        GameRecord.Instance.levelIndex--;
 
-        if(gameRecord.levelIndex <= 2)
-            SceneManager.LoadScene(gameRecord.levelIndex + 1);        
+        if(GameRecord.Instance.levelIndex <= 2)
+        {
+            GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
+            SceneManager.LoadScene(GameRecord.Instance.levelIndex + 1);
+        }
     }
 
     public void OnClickNextLevelButton()
     {
-        if (gameRecord.levelIndex <= 2)
-            SceneManager.LoadScene((gameRecord.levelIndex - 1) + 2);
+        if (GameRecord.Instance.levelIndex <= 2)
+            SceneManager.LoadScene((GameRecord.Instance.levelIndex - 1) + 2);
         
     }
 

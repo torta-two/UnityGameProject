@@ -15,8 +15,8 @@ public class PausePanel : BasePanel
         currentScore = transform.Find("CurrentScorePanel/CurrentScore").GetComponent<Text>();
         maxScore = transform.Find("MaxScorePanel/MaxScore").GetComponent<Text>();
 
-        ctrl.model.OnScoreChange += OnScoreChange;
-        ctrl.model.OnMaxScoreChange += OnMaxScoreChange;
+        ctrl.Model.OnScoreChange += OnScoreChange;
+        ctrl.Model.OnMaxScoreChange += OnMaxScoreChange;
     }
 
     public override void OnEnter()
@@ -37,7 +37,7 @@ public class PausePanel : BasePanel
     public void OnClickRestartButton()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(ctrl.model.gameRecord.levelIndex + 1);
+        SceneManager.LoadScene(GameRecord.Instance.levelIndex + 1);
     }
 
     public void OnClickReturnButton()

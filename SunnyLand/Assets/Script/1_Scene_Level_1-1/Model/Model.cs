@@ -3,8 +3,6 @@ using System;
 
 public class Model : MonoBehaviour
 {
-    [HideInInspector]
-    public GameRecordInfo gameRecord;
     public event Action<int> OnScoreChange;
     public event Action<int> OnMaxScoreChange;
     public event Action<int, int> OnBalance;
@@ -12,11 +10,6 @@ public class Model : MonoBehaviour
     private int score = 0;
     private int maxScore = 0;
     private int specialCoin = 0;
-
-    private void Awake()
-    {
-        gameRecord = FindObjectOfType<GameRoot>().gameRecord;        
-    }
 
     private void Start()
     {
@@ -35,13 +28,13 @@ public class Model : MonoBehaviour
 
     public void LoadScore()
     {
-        gameRecord.Load();
+
 
         //玩的是玩过的，有记录的关卡
         //不包括最新一关是因为，有可能是第一次玩最新一关，记录list还没有扩容
-        if (gameRecord.levelIndex < gameRecord.beingPassedLevel)
+        if (GameRecord.Instance.levelIndex < GameRecord.Instance.beingPassedLevel)
         {
-            maxScore = gameRecord.maxScore[gameRecord.levelIndex - 1];
+            maxScore = GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1];
         }
     }
 
@@ -58,19 +51,19 @@ public class Model : MonoBehaviour
                 {
                     score += 50;
                     specialCoin++;
-                    gameRecord.getCoin++;
+                    GameRecord.Instance.getCoin++;
                 }
                 break;
             case "CommonEnemy":
                 {
                     score += 10;
-                    gameRecord.killMonster++;
+                    GameRecord.Instance.killMonster++;
                 }
                 break;
             case "SpecialEnemy":
                 {
                     score += 100;
-                    gameRecord.killMonster++;
+                    GameRecord.Instance.killMonster++;
                 }
                 break;
             default: break;
@@ -81,17 +74,17 @@ public class Model : MonoBehaviour
     {
         OnBalance?.Invoke(score, specialCoin);
 
-        if (gameRecord.maxScore[gameRecord.levelIndex - 1] < maxScore)
-            gameRecord.maxScore[gameRecord.levelIndex - 1] = maxScore;
+        if (GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1] < maxScore)
+            GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1] = maxScore;
 
-        if (gameRecord.specialCoin[gameRecord.levelIndex - 1] < specialCoin)
-            gameRecord.specialCoin[gameRecord.levelIndex - 1] = specialCoin;
+        if (GameRecord.Instance.specialCoin[GameRecord.Instance.levelIndex - 1] < specialCoin)
+            GameRecord.Instance.specialCoin[GameRecord.Instance.levelIndex - 1] = specialCoin;
 
-        if (gameRecord.levelIndex == gameRecord.beingPassedLevel)
-            gameRecord.beingPassedLevel++;
+        if (GameRecord.Instance.levelIndex == GameRecord.Instance.beingPassedLevel)
+            GameRecord.Instance.beingPassedLevel++;
+       
+        GameRecord.Instance.levelIndex++;
 
-        gameRecord.levelIndex++;
-
-        gameRecord.Save();
+        GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
     }
 }

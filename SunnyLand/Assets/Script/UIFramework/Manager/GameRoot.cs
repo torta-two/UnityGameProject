@@ -4,7 +4,8 @@ public class GameRoot : MonoBehaviour
 {
     public UIPanelInfo.PanelType mainPanel;
     public UIPanelInfo panelInfo;
-    public GameRecordInfo gameRecord;
+    public GameRecord gameRecord;
+    public static string GameRecordJsonSavePath => Application.dataPath + "/Json/json_GameRecord";
 
     private UIManager _uiManager;
     [HideInInspector]
@@ -23,7 +24,9 @@ public class GameRoot : MonoBehaviour
 
     private void Awake()
     {
-        gameRecord = GameRecordInfo.Instance;
+        GameRecord.Load(GameRecordJsonSavePath, gameRecord);
+        gameRecord = GameRecord.Instance;
+
         UIManager.PushPanel(mainPanel);
     }
 

@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Ctrl : MonoBehaviour
 {
     [HideInInspector]
-    public Model model;
+    public Model Model => FindObjectOfType<Model>();
+
+    [HideInInspector]
+    public View View => FindObjectOfType<View>();
 
     [HideInInspector]
     public AudioManager audioManager;
@@ -19,16 +21,18 @@ public class Ctrl : MonoBehaviour
 
     [HideInInspector]
     public int loseHearts = 0;
-
-    [HideInInspector]
-    public UIManager UIManager;
-
-    [HideInInspector]
-    public GameRecordInfo gameRecord;
    
     [HideInInspector]
-    public event Action OnPlayerBeHurtForUI;
+    public event Action OnPlayerBeHurt_UI;
 
+    [HideInInspector]
+    public event Action OnPlayerPassLevel;
+
+    [HideInInspector]
+    public event Action OnPlayerBeDead;
+
+    private UIManager UIManager => FindObjectOfType<GameRoot>().UIManager;
+    
     private List<Enemy> enemies = new List<Enemy>();
     private List<Coin> coins = new List<Coin>();
 
@@ -36,10 +40,6 @@ public class Ctrl : MonoBehaviour
     {
         audioManager = GetComponent<AudioManager>();
         audioSource = GetComponent<AudioSource>();     
-        UIManager = GetComponent<GameRoot>().UIManager;
-        gameRecord = GetComponent<GameRoot>().gameRecord;
-
-        model = FindObjectOfType<Model>();
 
         Enemy[] emys = GetComponentsInChildren<Enemy>();
         Coin[] cons = GetComponentsInChildren<Coin>();
@@ -47,15 +47,34 @@ public class Ctrl : MonoBehaviour
         enemies.CopyFrom(emys);
         coins.CopyFrom(cons);
 
-        Transform PlayerTrans = transform.Find("PlayerTrans");
+        OnPlayerPassLevel += View.OnPlayerPassLevel;
+        OnPlayerBeDead += View.OnPlayerBeDead;
 
-        foreach (var item in model.gameRecord.playerPrefabList)
+        Transform PlayerTrans = transform.Find("PlayerTrans");
+        Debug.Log("1");
+        foreach (var item in GameRecord.playerPathList)
         {
-            if (item.playerInfo.isSelect)
+            GameObject playerPrefab = Resources.Load(item) as GameObject;
+            if(playerPrefab == null)
+                Debug.Log(playerPrefab.name);
+            if(playerPrefab.GetComponent<PlayerControl>().playerInfo.isSelect)
             {
-                player = Instantiate(item, PlayerTrans.position, Quaternion.identity, transform);
+                player = Instantiate(playerPrefab, PlayerTrans.position, Quaternion.identity, transform).GetComponent<PlayerControl>();
             }
         }
+    }
+
+    private void Start()
+    {
+        //Transform PlayerTrans = transform.Find("PlayerTrans");
+
+        //foreach (var item in GameRecord.playerPrefabList)
+        //{
+        //    if (item.playerInfo.isSelect)
+        //    {
+        //        player = Instantiate(item, PlayerTrans.position, Quaternion.identity, transform);
+        //    }
+        //}
     }
 
     private void Update()
@@ -70,9 +89,8 @@ public class Ctrl : MonoBehaviour
         {
             if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
             {
-                UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
-                UIManager.PushPanel(UIPanelInfo.PanelType.BalancePanel);
-                model.SaveScore();
+                OnPlayerPassLevel();
+                Model.SaveScore();
 
                 audioManager.Play(audioManager.passLevel, player.audioSource);
             }
@@ -83,12 +101,10 @@ public class Ctrl : MonoBehaviour
         {
             if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.EndingPanel))
             {
-                UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
+                OnPlayerBeDead();
 
                 foreach (var item in enemies)
-                    item.enabled = false;
-
-                StartCoroutine(DelayInvokePushPanel(UIPanelInfo.PanelType.DeathPanel, 3));                    
+                    item.enabled = false;                                   
             }
         }
         else
@@ -101,8 +117,7 @@ public class Ctrl : MonoBehaviour
 
                 if (enemy.CheckPlayBeHurt(player))
                 {
-                    if (OnPlayerBeHurtForUI != null)
-                        OnPlayerBeHurtForUI();
+                    OnPlayerBeHurt_UI?.Invoke();
                 }
 
                 if (deadEnemy != null)
@@ -113,7 +128,7 @@ public class Ctrl : MonoBehaviour
 
             if (deadEnemy != null)
             {
-                model.GetScore(deadEnemy.tag);
+                Model.GetScore(deadEnemy.tag);
                 deadEnemy.OnEnemyDead();
 
                 enemies.Remove(deadEnemy);
@@ -139,7 +154,7 @@ public class Ctrl : MonoBehaviour
             if (deadReward != null)
             {
                 audioManager.Play(audioManager.commonCoin, deadReward.GetComponent<AudioSource>());
-                model.GetScore(deadReward.tag);
+                Model.GetScore(deadReward.tag);
                 deadReward.OnGetCoins();
 
                 coins.Remove(deadReward);
@@ -147,25 +162,5 @@ public class Ctrl : MonoBehaviour
 
             #endregion
         }
-    }
-
-
-    private IEnumerator DelayInvokePushPanel(UIPanelInfo.PanelType type , int delayTime)
-    {
-        for (int i = 0; i < delayTime; i++)
-            yield return new WaitForSeconds(1);
-
-        UIManager.PushPanel(type);
-        StopCoroutine(DelayInvokePushPanel(type , delayTime));
-    }
-
-
-    private void OnApplicationQuit()
-    {
-        if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.ExitWarningPanel, true))
-        {
-            Application.CancelQuit();
-            UIManager.PushPanel(UIPanelInfo.PanelType.ExitWarningPanel);
-        }
-    }
+    } 
 }

@@ -8,12 +8,9 @@ public class BasePanel : MonoBehaviour
     [HideInInspector]
     public CanvasGroup canvasGroup;
 
-    [HideInInspector ]
-    public GameRecordInfo gameRecord;
-
     protected Button closeButton;
-    protected Ctrl ctrl;       
-    protected UIManager UIManager;
+    protected Ctrl ctrl;
+    protected UIManager UIManager => FindObjectOfType<GameRoot>().UIManager;
 
     protected virtual void Awake()
     {
@@ -21,18 +18,6 @@ public class BasePanel : MonoBehaviour
         
         closeButton = FindCloseButton("CloseButton");
         ctrl = FindObjectOfType<Ctrl>();       
-
-        if (ctrl != null)
-        {
-            gameRecord = ctrl.gameRecord;
-            UIManager = ctrl.UIManager;
-        }
-        else
-        {
-            gameRecord = FindObjectOfType<GameRoot>().gameRecord;
-            UIManager = FindObjectOfType<GameRoot>().UIManager;
-        }
-
 
         if (closeButton != null)
         {

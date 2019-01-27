@@ -11,13 +11,17 @@ public class CameraFollow : MonoBehaviour
     private AudioSource audioSource;
 
     private void Awake()
-    {
-        player = FindObjectOfType<PlayerControl>().transform;
+    {        
         audioManager = FindObjectOfType<AudioManager>();
         audioSource = GetComponent<AudioSource>();
 
         audioSource.loop = true;
         audioManager.Play(audioManager.BGM, audioSource, true);
+    }
+
+    private void OnEnable()
+    {
+        player = FindObjectOfType<PlayerControl>().transform;
     }
 
     private void FixedUpdate()

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Teststb : MonoBehaviour
 {
-    public GameRecordInfo gameRecord;
+    public GameRecord gameRecord;
 
     private Text ver;
     private Button clickButton;
@@ -17,16 +17,16 @@ public class Teststb : MonoBehaviour
     {
         if(System.IO.File.Exists(SaveGameRecordPath))
         {
-            GameRecordInfo.LoadFromJSON(SaveGameRecordPath);
+            //GameRecord.LoadFromJSON(SaveGameRecordPath);
         }
         else
         {
-            GameRecordInfo.InitializeFromDefault(gameRecord);
+            //GameRecord.InitializeFromDefault(gameRecord);
         }
 
         ver = GameObject.Find("Canvas/Panel/ver").GetComponent<Text>();
 
-        ver.text = GameRecordInfo.Instance.money.ToString();
+        ver.text = GameRecord.Instance.money.ToString();
 
         clickButton = GameObject.Find("Canvas/Click").GetComponent<Button>();
         clickButton.onClick.AddListener(OnClickButton);
@@ -35,9 +35,9 @@ public class Teststb : MonoBehaviour
 
     private void OnClickButton()
     {
-        GameRecordInfo.Instance.money += 10;
-        ver.text = GameRecordInfo.Instance.money.ToString();
-        GameRecordInfo.Instance.SaveToJSON(SaveGameRecordPath);
+        GameRecord.Instance.money += 10;
+        ver.text = GameRecord.Instance.money.ToString();
+        GameRecord.Instance.Save(SaveGameRecordPath);
     }
     
 }

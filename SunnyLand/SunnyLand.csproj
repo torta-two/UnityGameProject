@@ -353,7 +353,7 @@
     <Compile Include="Assets\Script\1_Scene_Level_1-1\View\View.cs" />
     <Compile Include="Assets\Script\Extension\DictionaryExtension.cs" />
     <Compile Include="Assets\Script\Extension\ListExtension.cs" />
-    <Compile Include="Assets\Script\GameSetting\GameRecordInfo.cs" />
+    <Compile Include="Assets\Script\GameSetting\GameRecord.cs" />
     <Compile Include="Assets\Script\GameSetting\PlayerInfo.cs" />
     <Compile Include="Assets\Script\GameSetting\UIPanelInfo.cs" />
     <Compile Include="Assets\Script\UIFramework\Manager\GameRoot.cs" />

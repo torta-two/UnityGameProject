@@ -13,8 +13,6 @@ public class LevelSelectButton : MonoBehaviour
     [HideInInspector]
     public Transform[] specialCoin;
 
-    private LevelSelectPanel levelSelectPanel;
-    private GameRecordInfo gameRecord;
 
     private float radian = 0; //漂浮动画弧度增量
 
@@ -26,19 +24,16 @@ public class LevelSelectButton : MonoBehaviour
         playerImage = transform.Find("Player");
         specialCoinPanel = transform.Find("SpecialCoin");
 
-        levelSelectPanel = FindObjectOfType<LevelSelectPanel>();
-        gameRecord = levelSelectPanel.gameRecord;
-
-        if (gameRecord.beingPassedLevel > buttonLevelIndex)
+        if (GameRecord.Instance.beingPassedLevel > buttonLevelIndex)
         {
-            if (gameRecord.levelIndex == buttonLevelIndex)
+            if (GameRecord.Instance.levelIndex == buttonLevelIndex)
                 SetUIActive(outline_Passed: true, specialCoinPanel: true, player: true);
             else
                 SetUIActive(outline_Passed: true, specialCoinPanel: true);
         }
-        else if (gameRecord.beingPassedLevel == buttonLevelIndex)
+        else if (GameRecord.Instance.beingPassedLevel == buttonLevelIndex)
         {
-            if (gameRecord.levelIndex == buttonLevelIndex)
+            if (GameRecord.Instance.levelIndex == buttonLevelIndex)
                 SetUIActive(outline: true, player: true);
             else
                 SetUIActive(outline: true);
@@ -58,7 +53,7 @@ public class LevelSelectButton : MonoBehaviour
 
     private void Update()
     {
-        if (gameRecord.beingPassedLevel == buttonLevelIndex)
+        if (GameRecord.Instance.beingPassedLevel == buttonLevelIndex)
         {
             OutlineAnim();
         }
@@ -96,10 +91,10 @@ public class LevelSelectButton : MonoBehaviour
 
     public void OnClickLevelSelectButton()
     {       
-        if (buttonLevelIndex <= gameRecord.beingPassedLevel)
+        if (buttonLevelIndex <= GameRecord.Instance.beingPassedLevel)
         {
-            gameRecord.levelIndex = buttonLevelIndex;
-            gameRecord.Save();
+            GameRecord.Instance.levelIndex = buttonLevelIndex;
+            GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
             SceneManager.LoadScene(buttonLevelIndex + 1);
         }
     }

@@ -1,55 +1,41 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections;
+using UnityEngine;
 
 public class View : MonoBehaviour
-{    
-    //private Ctrl ctrl;
-    //private Text score;
-    //private Text currentScore;
-    //private Text maxScore;
-    //private Image[] hearts;
-    //private Slider scrollbar;
+{
+    private UIManager UIManager => FindObjectOfType<GameRoot>().UIManager;
 
-    private void Start ()
+
+    public void OnPlayerPassLevel()
     {
-        //ctrl = GameObject.FindWithTag("Ctrl").GetComponent<Ctrl>();
-        //score = transform.Find("Canvas/MainMenuPanel/ScorePanel/Score").GetComponent<Text>();
-        //currentScore = transform.Find("Canvas/PausePanel/CurrentScore").GetComponent<Text>();
-        //maxScore = transform.Find("Canvas/PausePanel/MaxScore").GetComponent<Text>();
-        //hearts = new Image[ctrl.gameManager.player.playerInfo.maxHP];
+        UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
+        UIManager.PushPanel(UIPanelInfo.PanelType.BalancePanel);
+    }   
 
-        //Image[] allHearts = transform.Find("Canvas/MainMenuPanel/HeartsPanel").GetComponentsInChildren<Image>();
 
-        //for (int i = 0; i < allHearts.Length; i++)
-        //{
-        //    if (i < hearts.Length)
-        //    {                
-        //        hearts[i] = allHearts[i];
-        //    }
-        //    else
-        //    {
-        //        allHearts[i].gameObject.SetActive(false);
-        //    }
-        //}       
-
-        //scrollbar = transform.Find("Canvas/SystemSettingPanel/Volume/Slider").GetComponent<Slider>();
+    public void OnPlayerBeDead()
+    {
+        UIManager.PushPanel(UIPanelInfo.PanelType.EndingPanel);
+        StartCoroutine(DelayInvokePushPanel(UIPanelInfo.PanelType.DeathPanel, 3));
     }
 
-    private void Update()
-    {
-        //score.text = ctrl.score.ToString();
-        //currentScore.text = score.text;
-        //maxScore.text = ctrl.maxScore.ToString();
-       
-        //switch(ctrl.loseHearts)
-        //{
-        //    case 0: break;
-        //    case 1:
-        //    case 2: 
-        //    case 3: hearts[ctrl.loseHearts - 1].gameObject.SetActive(false); break;
-        //    default: break;
-        //}
 
-        //ctrl.volume = scrollbar.value;
+    private IEnumerator DelayInvokePushPanel(UIPanelInfo.PanelType type, int delayTime)
+    {
+        for (int i = 0; i < delayTime; i++)
+            yield return new WaitForSeconds(1);
+
+        UIManager.PushPanel(type);
+        StopCoroutine(DelayInvokePushPanel(type, delayTime));
+    }
+
+
+    private void OnApplicationQuit()
+    {
+        if (!UIManager.CheckPanelExist(UIPanelInfo.PanelType.ExitWarningPanel, true))
+        {
+            Application.CancelQuit();
+            UIManager.PushPanel(UIPanelInfo.PanelType.ExitWarningPanel);
+        }
     }
 }

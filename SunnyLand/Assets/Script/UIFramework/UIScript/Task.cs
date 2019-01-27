@@ -36,7 +36,7 @@ public class Task : MonoBehaviour
         AchievePanelYesButton = taskAchievePanel.Find("YesButton").GetComponent<Button>();
         AchievePanelYesButton.onClick.AddListener(OnClickAchievePanelYesButton);
 
-        if (taskPanel.gameRecord.taskState[taskIndex - 1] == 1)
+        if (GameRecord.Instance.taskState[taskIndex - 1] == 1)
         {
             MakeTaskToAchieveState();
             enabled = false;
@@ -54,9 +54,9 @@ public class Task : MonoBehaviour
         else
         {
             if (isMonsterTask)
-                currentAmountText.text = taskPanel.gameRecord.killMonster.ToString();
+                currentAmountText.text = GameRecord.Instance.killMonster.ToString();
             else
-                currentAmountText.text = taskPanel.gameRecord.getCoin.ToString();
+                currentAmountText.text = GameRecord.Instance.getCoin.ToString();
             currentAmount = Convert.ToInt32(currentAmountText.text);
         }
     }
@@ -76,10 +76,10 @@ public class Task : MonoBehaviour
             default: rewardMoney = 0; break;
         }
         rewardMoneyText.text = rewardMoney.ToString();
-        taskPanel.gameRecord.money += rewardMoney;
+        GameRecord.Instance.money += rewardMoney;
 
         MakeTaskToAchieveState();
-        taskPanel.gameRecord.taskState[taskIndex - 1] = 1;
+        GameRecord.Instance.taskState[taskIndex - 1] = 1;
     }
 
     private void OnClickAchievePanelYesButton()

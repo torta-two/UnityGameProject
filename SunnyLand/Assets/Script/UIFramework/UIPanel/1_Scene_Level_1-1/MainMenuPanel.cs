@@ -26,8 +26,8 @@ public class MainMenuPanel : BasePanel
         score = transform.Find("ScorePanel/Score").GetComponent<Text>();
         score.text = 0.ToString();
 
-        ctrl.OnPlayerBeHurtForUI += OnPlayerBehurt_UI;
-        ctrl.model.OnScoreChange += OnScoreChange;
+        ctrl.OnPlayerBeHurt_UI += OnPlayerBehurt_UI;
+        ctrl.Model.OnScoreChange += OnScoreChange;
     }
 
 
