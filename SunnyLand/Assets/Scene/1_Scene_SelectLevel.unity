@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainPanel: 1
   panelInfo: {fileID: 11400000, guid: 9b7695bf6cc61d04986df858a65ce1a7, type: 2}
-  gameRecord: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
+  gameRecord: {fileID: 11400000, guid: 271dffef73738834cb70d8ea25f63797, type: 2}
 --- !u!82 &888637972
 AudioSource:
   m_ObjectHideFlags: 0

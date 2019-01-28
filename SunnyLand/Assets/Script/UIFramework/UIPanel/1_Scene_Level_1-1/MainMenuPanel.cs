@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
+﻿using UnityEngine.UI;
 
 public class MainMenuPanel : BasePanel
 {
@@ -10,7 +8,16 @@ public class MainMenuPanel : BasePanel
     protected override void Awake()
     {
         base.Awake();
+      
+        score = transform.Find("ScorePanel/Score").GetComponent<Text>();
+        score.text = 0.ToString();
 
+        ctrl.OnPlayerBeHurt_UI += OnPlayerBehurt_UI;
+        ctrl.Model.OnScoreChange += OnScoreChange;
+    }
+
+    private void Start()
+    {
         #region get hearts UI
         hearts = new Image[ctrl.player.playerInfo.maxHP];
         Image[] allHearts = transform.Find("HeartsPanel").GetComponentsInChildren<Image>();
@@ -22,12 +29,6 @@ public class MainMenuPanel : BasePanel
                 allHearts[i].gameObject.SetActive(false);
         }
         #endregion
-
-        score = transform.Find("ScorePanel/Score").GetComponent<Text>();
-        score.text = 0.ToString();
-
-        ctrl.OnPlayerBeHurt_UI += OnPlayerBehurt_UI;
-        ctrl.Model.OnScoreChange += OnScoreChange;
     }
 
 

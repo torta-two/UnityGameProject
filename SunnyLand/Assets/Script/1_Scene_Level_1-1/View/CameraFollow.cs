@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
         audioManager.Play(audioManager.BGM, audioSource, true);
     }
 
-    private void OnEnable()
+    private void Start()
     {
         player = FindObjectOfType<PlayerControl>().transform;
     }

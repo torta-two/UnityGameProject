@@ -28,10 +28,7 @@ public class Model : MonoBehaviour
 
     public void LoadScore()
     {
-
-
         //玩的是玩过的，有记录的关卡
-        //不包括最新一关是因为，有可能是第一次玩最新一关，记录list还没有扩容
         if (GameRecord.Instance.levelIndex < GameRecord.Instance.beingPassedLevel)
         {
             maxScore = GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1];
@@ -73,6 +70,8 @@ public class Model : MonoBehaviour
     public void SaveScore()
     {
         OnBalance?.Invoke(score, specialCoin);
+
+        Debug.Log(GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1]);
 
         if (GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1] < maxScore)
             GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1] = maxScore;

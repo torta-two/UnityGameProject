@@ -802,12 +802,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3cffd98405998469bcf3ca24e099e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
   audioManager: {fileID: 0}
   audioSource: {fileID: 0}
   player: {fileID: 0}
   loseHearts: 0
-  gameRecord: {fileID: 0}
 --- !u!114 &341149056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,8 +826,6 @@ MonoBehaviour:
   specialCoin: {fileID: 8300000, guid: a09d61446ebc31548a51312b20737125, type: 3}
   passLevel: {fileID: 8300000, guid: 4de4223bc63281046a8063aa4d62c011, type: 3}
   GetStar: {fileID: 8300000, guid: fb87d002b125fab4cbb1fefc8e142c1e, type: 3}
-  ClickButton: {fileID: 8300000, guid: 513f41dfa9992e444a74cbf7dbbb4126, type: 3}
-  EnterButton: {fileID: 8300000, guid: cf24b7d247e4cf74babdf7156fdc62cd, type: 3}
   bgmVolume: 0.6
   effectVolume: 1
 --- !u!114 &341149057
@@ -845,7 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainPanel: 4
   panelInfo: {fileID: 11400000, guid: 6d0655b3ceb645040afbce3afd4d21fe, type: 2}
-  gameRecord: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
+  gameRecord: {fileID: 11400000, guid: 271dffef73738834cb70d8ea25f63797, type: 2}
 --- !u!1001 &349419329
 Prefab:
   m_ObjectHideFlags: 0
@@ -1572,6 +1568,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 572998211}
+  - component: {fileID: 572998210}
   m_Layer: 0
   m_Name: View
   m_TagString: View
@@ -1579,6 +1576,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &572998210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 572998209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd46ae9f4b6a107479932128582f73a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &572998211
 Transform:
   m_ObjectHideFlags: 0
@@ -2403,8 +2411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353ac4c375ac7d344b8ede47245e7101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRecord: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
-  levelIndex: 0
 --- !u!4 &895544881
 Transform:
   m_ObjectHideFlags: 0

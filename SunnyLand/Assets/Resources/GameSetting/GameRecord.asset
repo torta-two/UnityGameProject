@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e39bb51a04de3143b23b356ce3864e2, type: 3}
-  m_Name: 
+  m_Name: GameRecord
   m_EditorClassIdentifier: 
   beingPassedLevel: 1
   levelIndex: 1
   money: 0
   killMonster: 0
   getCoin: 0
-  specialCoin: 
-  maxScore: 
-  taskState: 
+  specialCoin: 000000000000000000000000000000000000000000000000
+  maxScore: 000000000000000000000000000000000000000000000000
+  taskState: 0000000000000000000000000000000000000000

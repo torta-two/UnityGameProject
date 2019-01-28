@@ -345,7 +345,6 @@
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\PlayerState\PlayerRunState.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\StateMachine\State.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\FSM\StateMachine\StateMachine.cs" />
-    <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\GameManager.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Prop\Coin.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Ctrl\Prop\EndingCheck.cs" />
     <Compile Include="Assets\Script\1_Scene_Level_1-1\Model\Model.cs" />
@@ -374,7 +373,6 @@
     <Compile Include="Assets\Script\UIFramework\UIScript\LevelSelectDrag.cs" />
     <Compile Include="Assets\Script\UIFramework\UIScript\SelectPlayer.cs" />
     <Compile Include="Assets\Script\UIFramework\UIScript\Task.cs" />
-    <Compile Include="Assets\Teststb.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />

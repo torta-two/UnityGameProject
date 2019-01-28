@@ -1,5 +1,4 @@
-﻿
-public class LevelSelectPanel : BasePanel
+﻿public class LevelSelectPanel : BasePanel
 {
     private LevelSelectButton[] levelButtons;
 
@@ -32,6 +31,9 @@ public class LevelSelectPanel : BasePanel
         }
     }
 
+
+    #region button onclick event
+
     public void OnClickStoreButton()
     {
         UIManager.PushPanel(UIPanelInfo.PanelType.StorePanel);
@@ -42,8 +44,10 @@ public class LevelSelectPanel : BasePanel
         UIManager.PushPanel(UIPanelInfo.PanelType.TaskPanel);
     }
 
+    #endregion
+
     private void OnApplicationQuit()
     {
-
+        GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
     }
 }

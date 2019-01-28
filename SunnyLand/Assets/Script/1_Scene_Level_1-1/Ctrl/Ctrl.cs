@@ -51,30 +51,22 @@ public class Ctrl : MonoBehaviour
         OnPlayerBeDead += View.OnPlayerBeDead;
 
         Transform PlayerTrans = transform.Find("PlayerTrans");
-        Debug.Log("1");
-        foreach (var item in GameRecord.playerPathList)
+
+        foreach (var item in GameRecord.PlayerPrefabPathList)
         {
             GameObject playerPrefab = Resources.Load(item) as GameObject;
-            if(playerPrefab == null)
-                Debug.Log(playerPrefab.name);
-            if(playerPrefab.GetComponent<PlayerControl>().playerInfo.isSelect)
+
+            if (playerPrefab == null)
+                Debug.LogFormat("Can't find the prefab in the path of {0}", item);
+
+            if (playerPrefab.GetComponent<PlayerControl>().playerInfo.isSelect)
             {
                 player = Instantiate(playerPrefab, PlayerTrans.position, Quaternion.identity, transform).GetComponent<PlayerControl>();
             }
+
+            if (player == null)
+                Debug.Log("Don's select player!");
         }
-    }
-
-    private void Start()
-    {
-        //Transform PlayerTrans = transform.Find("PlayerTrans");
-
-        //foreach (var item in GameRecord.playerPrefabList)
-        //{
-        //    if (item.playerInfo.isSelect)
-        //    {
-        //        player = Instantiate(item, PlayerTrans.position, Quaternion.identity, transform);
-        //    }
-        //}
     }
 
     private void Update()
