@@ -31,12 +31,12 @@ public class Interlude
         canvasScaler = canvas.GetComponent<CanvasScaler>();
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 
-        interludePanel = Object.Instantiate(Resources.Load("interludePanel"), canvas.transform) as GameObject;
-        interludePanel.transform.SetAsLastSibling();
-        interludePanel.SetActive(false);
+        //interludePanel = UnityEngine.Object.Instantiate(Resources.Load("interludePanel"), canvas.transform) as GameObject;
+        //interludePanel.transform.SetAsLastSibling();
+        //interludePanel.SetActive(false);
 
-        Object.DontDestroyOnLoad(interludePanel);
-        Object.DontDestroyOnLoad(canvas.gameObject);
+        //UnityEngine.Object.DontDestroyOnLoad(interludePanel);
+        UnityEngine.Object.DontDestroyOnLoad(canvas.gameObject);
     }
 
     public void LoadScene(int sceneBuildIndex)

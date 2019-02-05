@@ -47,9 +47,9 @@ public class StorePanel : BasePanel
 
     private IEnumerator MoneyAnim(int lossMoney)
     {
-        for (int i = 0; i < lossMoney / 10; i++)
+        for (int i = 0; i < lossMoney / 100; i++)
         {
-            GameRecord.Instance.money -= 10;
+            GameRecord.Instance.money -= 100;
             moneyText.text = GameRecord.Instance.money.ToString();
 
             yield return new WaitForSeconds(0.01f);

@@ -59,7 +59,7 @@ public class BalancePanel : BasePanel
         for (int i = 1; i <= addMoney; i += 1)
         {
             GameRecord.Instance.money += 1;
-            money.text = GameRecord.Instance.money.ToString();
+            money.text = i.ToString();
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -90,26 +90,31 @@ public class BalancePanel : BasePanel
     #region button click event
 
     public void OnClickReturnButton()
-    {
+    {       
+        if (GameRecord.Instance.levelIndex <= 2)
+        {
+            GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
+            SceneManager.LoadScene(GameRecord.Instance.levelIndex + 1);
+        }
+
         SceneManager.LoadScene(1);
     }
 
     public void OnClickRestartButton()
-    {
-        GameRecord.Instance.levelIndex--;
-
+    {        
         if(GameRecord.Instance.levelIndex <= 2)
         {
             GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
             SceneManager.LoadScene(GameRecord.Instance.levelIndex + 1);
         }
+
+        GameRecord.Instance.levelIndex--;
     }
 
     public void OnClickNextLevelButton()
     {
         if (GameRecord.Instance.levelIndex <= 2)
-            SceneManager.LoadScene((GameRecord.Instance.levelIndex - 1) + 2);
-        
+            SceneManager.LoadScene((GameRecord.Instance.levelIndex - 1) + 2);        
     }
 
     #endregion

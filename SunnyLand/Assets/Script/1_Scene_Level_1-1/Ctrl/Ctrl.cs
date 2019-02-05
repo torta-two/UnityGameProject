@@ -65,7 +65,7 @@ public class Ctrl : MonoBehaviour
             }
 
             if (player == null)
-                Debug.Log("Don's select player!");
+                Debug.Log("This player is null,don't select!");
         }
     }
 

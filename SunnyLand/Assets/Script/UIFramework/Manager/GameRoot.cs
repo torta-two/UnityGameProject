@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameRoot : MonoBehaviour
 {
@@ -23,10 +24,28 @@ public class GameRoot : MonoBehaviour
         }
     }
 
+    private Canvas interludeCanvas;
+    private CanvasScaler interludeCanvasScaler;
+
     private void Awake()
     {        
         GameRecord.Load(GameRecordJsonSavePath, gameRecord);
         UIManager.PushPanel(mainPanel);
+
+        GameObject interlude = GameObject.Find("InterludeCanvas");
+
+        if (interlude == null)
+        {
+            interlude = new GameObject("InterludeCanvas", typeof(Canvas), typeof(CanvasScaler));
+            DontDestroyOnLoad(interlude);
+        }
+
+        interludeCanvas = interlude.GetComponent<Canvas>();
+        interludeCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        //interludeCanvas.sortingOrder = 999;
+
+        interludeCanvasScaler = interlude.GetComponent<CanvasScaler>();
+        interludeCanvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
     }
 
 }

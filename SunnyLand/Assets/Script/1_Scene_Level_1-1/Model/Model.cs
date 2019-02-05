@@ -71,8 +71,6 @@ public class Model : MonoBehaviour
     {
         OnBalance?.Invoke(score, specialCoin);
 
-        Debug.Log(GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1]);
-
         if (GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1] < maxScore)
             GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1] = maxScore;
 

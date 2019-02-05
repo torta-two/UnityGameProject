@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: PlayerInfo_Rabbit
   m_EditorClassIdentifier: 
   playerName: Rabbit
-  price: 1888
+  price: 1800
   isPurchase: 0
   isSelect: 0
   maxHP: 4
