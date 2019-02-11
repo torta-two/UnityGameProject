@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 132
+  controlID: 139
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 102, y: 242}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 50
+  controlID: 28
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 103
+  controlID: 79
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -382,7 +382,7 @@ MonoBehaviour:
     - e00: 0.7081579
       e01: 0
       e02: 0
-      e03: -20.407867
+      e03: -20.407898
       e10: 0
       e11: 0.7081579
       e12: 0
@@ -791,9 +791,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 582b0000
-    m_LastClickedID: 0
-    m_ExpandedIDs: 9efbfffff4ffffff00000000
+    m_SelectedIDs: 14300000
+    m_LastClickedID: 12308
+    m_ExpandedIDs: 9efbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -866,7 +866,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 8a270000
     m_LastClickedID: 10122
-    m_ExpandedIDs: 0000000024280000cc290000642d0000fe2f0000c0360000c2360000c4360000c6360000c8360000ca360000cc360000ce360000d0360000d2360000d4360000d6360000d8360000da360000dc360000de360000e0360000e2360000e4360000e6360000e8360000ea360000ec360000ee360000f0360000f2360000f4360000f6360000f8360000fa360000fc360000fe3600000037000002370000
+    m_ExpandedIDs: 00000000242800002a290000b4290000cc290000f02b0000642d0000fe2f0000c0360000c2360000c4360000c6360000c8360000ca360000cc360000ce360000d0360000d2360000d4360000d6360000d8360000da360000dc360000de360000e0360000e2360000e4360000e6360000e8360000ea360000ec360000ee360000f0360000f2360000f4360000f6360000f8360000fa360000fc360000fe3600000037000002370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -897,18 +897,18 @@ MonoBehaviour:
     m_ExpandedIDs: 00000000242800002a290000b4290000cc290000f02b0000642d0000fe2f0000c0360000c2360000c4360000c6360000c8360000ca360000cc360000ce360000d0360000d2360000d4360000d6360000d8360000da360000dc360000de360000e0360000e2360000e4360000e6360000e8360000ea360000ec360000ee360000f0360000f2360000f4360000f6360000f8360000fa360000fc360000fe3600000037000002370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: PlayerInfo_Fox
-      m_OriginalName: PlayerInfo_Fox
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 11698
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
