@@ -1,4 +1,6 @@
-﻿public class LevelSelectPanel : BasePanel
+﻿using UnityEngine;
+
+public class LevelSelectPanel : BasePanel
 {
     private LevelSelectButton[] levelButtons;
 
@@ -45,6 +47,8 @@
     }
 
     #endregion
+
+
 
     private void OnApplicationQuit()
     {

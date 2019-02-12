@@ -32,20 +32,20 @@ public class GameRoot : MonoBehaviour
         GameRecord.Load(GameRecordJsonSavePath, gameRecord);
         UIManager.PushPanel(mainPanel);
 
-        GameObject interlude = GameObject.Find("InterludeCanvas");
+        //GameObject interlude = GameObject.Find("InterludeCanvas");
 
-        if (interlude == null)
-        {
-            interlude = new GameObject("InterludeCanvas", typeof(Canvas), typeof(CanvasScaler));
-            DontDestroyOnLoad(interlude);
-        }
+        //if (interlude == null)
+        //{
+        //    interlude = new GameObject("InterludeCanvas", typeof(Canvas), typeof(CanvasScaler));
+        //    DontDestroyOnLoad(interlude);
+        //}
 
-        interludeCanvas = interlude.GetComponent<Canvas>();
-        interludeCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        //interludeCanvas.sortingOrder = 999;
+        //interludeCanvas = interlude.GetComponent<Canvas>();
+        //interludeCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        ////interludeCanvas.sortingOrder = 999;
 
-        interludeCanvasScaler = interlude.GetComponent<CanvasScaler>();
-        interludeCanvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        //interludeCanvasScaler = interlude.GetComponent<CanvasScaler>();
+        //interludeCanvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
     }
 
 }

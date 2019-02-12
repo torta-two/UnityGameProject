@@ -63,6 +63,7 @@ public class StorePanel : BasePanel
     {
         base.OnEnter();
         rectTransform.DOMoveY(0, 0.2f);
+        moneyText.text = GameRecord.Instance.money.ToString();
     }
 
     public override void OnExit()

@@ -114,7 +114,10 @@ public class BalancePanel : BasePanel
     public void OnClickNextLevelButton()
     {
         if (GameRecord.Instance.levelIndex <= 2)
-            SceneManager.LoadScene((GameRecord.Instance.levelIndex - 1) + 2);        
+        {
+            GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
+            SceneManager.LoadScene((GameRecord.Instance.levelIndex - 1) + 2);
+        }
     }
 
     #endregion

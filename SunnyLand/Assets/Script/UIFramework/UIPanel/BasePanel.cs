@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class BasePanel : MonoBehaviour
@@ -22,6 +23,7 @@ public class BasePanel : MonoBehaviour
         if (closeButton != null)
         {
             closeButton.onClick.AddListener(UIManager.PopPanel);
+            closeButton.onClick.AddListener(SaveDataInClosePanel);
         }
 
         if (canvasGroup == null)
@@ -39,6 +41,11 @@ public class BasePanel : MonoBehaviour
                 closeButton = item.GetComponent<Button>();
         }
         return closeButton;
+    }
+
+    private void SaveDataInClosePanel()
+    {
+        GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
     }
 
     public virtual void OnEnter()

@@ -624,11 +624,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0cdd90956b19d48aadd1bbc08db1d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRecord: {fileID: 11400000, guid: c9ed65080fda65946bda7a8c2db030cc, type: 2}
+  canvasGroup: {fileID: 0}
   clip: {fileID: 8300000, guid: 0ae90939f33383543bda2983361261e3, type: 3}
   moneyText: {fileID: 0}
   source: {fileID: 0}
-  selectPlayers: []
 --- !u!114 &114238517215398028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1284,7 +1283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}

@@ -80,6 +80,7 @@ public class Task : MonoBehaviour
 
         MakeTaskToAchieveState();
         GameRecord.Instance.taskState[taskIndex - 1] = 1;
+
     }
 
     private void OnClickAchievePanelYesButton()

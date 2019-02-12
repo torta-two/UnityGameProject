@@ -10,7 +10,10 @@ public class UIManager
         get
         {
             if (_canvasTransform == null)
+            {
                 _canvasTransform = GameObject.Find("Canvas").transform;
+            }
+
             return _canvasTransform;
         }
     }
