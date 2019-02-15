@@ -26,14 +26,14 @@ public class LevelSelectButton : MonoBehaviour
 
         if (GameRecord.Instance.beingPassedLevel > buttonLevelIndex)
         {
-            if (GameRecord.Instance.levelIndex == buttonLevelIndex)
+            if (GameRecord.Instance.currentLevelIndex == buttonLevelIndex)
                 SetUIActive(outline_Passed: true, specialCoinPanel: true, player: true);
             else
                 SetUIActive(outline_Passed: true, specialCoinPanel: true);
         }
         else if (GameRecord.Instance.beingPassedLevel == buttonLevelIndex)
         {
-            if (GameRecord.Instance.levelIndex == buttonLevelIndex)
+            if (GameRecord.Instance.currentLevelIndex == buttonLevelIndex)
                 SetUIActive(outline: true, player: true);
             else
                 SetUIActive(outline: true);
@@ -93,7 +93,7 @@ public class LevelSelectButton : MonoBehaviour
     {       
         if (buttonLevelIndex <= GameRecord.Instance.beingPassedLevel)
         {
-            GameRecord.Instance.levelIndex = buttonLevelIndex;
+            GameRecord.Instance.currentLevelIndex = buttonLevelIndex;
             GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
             SceneManager.LoadScene(buttonLevelIndex + 1);
         }

@@ -91,32 +91,29 @@ public class BalancePanel : BasePanel
 
     public void OnClickReturnButton()
     {       
-        if (GameRecord.Instance.levelIndex <= 2)
-        {
-            GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
-            SceneManager.LoadScene(GameRecord.Instance.levelIndex + 1);
-        }
-
+        GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
         SceneManager.LoadScene(1);
     }
 
     public void OnClickRestartButton()
-    {        
-        if(GameRecord.Instance.levelIndex <= 2)
+    {
+        GameRecord.Instance.currentLevelIndex--;
+
+        if (GameRecord.Instance.currentLevelIndex <= 3)
         {
             GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
-            SceneManager.LoadScene(GameRecord.Instance.levelIndex + 1);
-        }
-
-        GameRecord.Instance.levelIndex--;
+            SceneManager.LoadScene(GameRecord.Instance.currentLevelIndex + 1);
+        }        
     }
 
     public void OnClickNextLevelButton()
     {
-        if (GameRecord.Instance.levelIndex <= 2)
+        Debug.Log(GameRecord.Instance.currentLevelIndex);
+
+        if (GameRecord.Instance.currentLevelIndex <= 3)
         {
             GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
-            SceneManager.LoadScene((GameRecord.Instance.levelIndex - 1) + 2);
+            SceneManager.LoadScene(GameRecord.Instance.currentLevelIndex + 1);
         }
     }
 

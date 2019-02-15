@@ -3820,8 +3820,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206779165810680}
-        m_MethodName: 
+      - m_Target: {fileID: 114350774890658512}
+        m_MethodName: OnClickLevelSelectButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

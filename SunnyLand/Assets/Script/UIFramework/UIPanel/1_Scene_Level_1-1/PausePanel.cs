@@ -37,7 +37,7 @@ public class PausePanel : BasePanel
     public void OnClickRestartButton()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(GameRecord.Instance.levelIndex + 1);
+        SceneManager.LoadScene(GameRecord.Instance.currentLevelIndex + 1);
     }
 
     public void OnClickReturnButton()

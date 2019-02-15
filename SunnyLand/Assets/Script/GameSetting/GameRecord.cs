@@ -26,7 +26,7 @@ public class GameRecord : ScriptableObject
     };
 
     public int beingPassedLevel = 1;
-    public int levelIndex = 1;
+    public int currentLevelIndex = 1;
     public int money = 0;
     public int killMonster = 0;
     public int getCoin = 0;

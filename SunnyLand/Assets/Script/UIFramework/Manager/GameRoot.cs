@@ -7,7 +7,7 @@ public class GameRoot : MonoBehaviour
     public UIPanelInfo panelInfo;
     public GameRecord gameRecord;
     public static string GameRecordJsonSavePath =>
-        Application.persistentDataPath + "/Json/json_GameRecord.json";
+        Application.persistentDataPath + "/json_GameRecord.json";
 
     private UIManager _uiManager;
     [HideInInspector]
@@ -24,8 +24,8 @@ public class GameRoot : MonoBehaviour
         }
     }
 
-    private Canvas interludeCanvas;
-    private CanvasScaler interludeCanvasScaler;
+    //private Canvas interludeCanvas;
+    //private CanvasScaler interludeCanvasScaler;
 
     private void Awake()
     {        

@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed = 1;
     public float patrolRadius = 5;
 
+    [HideInInspector]
     public AudioSource audioSource;
 
     private Ctrl ctrl;

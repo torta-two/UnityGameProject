@@ -29,9 +29,9 @@ public class Model : MonoBehaviour
     public void LoadScore()
     {
         //玩的是玩过的，有记录的关卡
-        if (GameRecord.Instance.levelIndex < GameRecord.Instance.beingPassedLevel)
+        if (GameRecord.Instance.currentLevelIndex < GameRecord.Instance.beingPassedLevel)
         {
-            maxScore = GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1];
+            maxScore = GameRecord.Instance.maxScore[GameRecord.Instance.currentLevelIndex - 1];
         }
     }
 
@@ -71,16 +71,16 @@ public class Model : MonoBehaviour
     {
         OnBalance?.Invoke(score, specialCoin);
 
-        if (GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1] < maxScore)
-            GameRecord.Instance.maxScore[GameRecord.Instance.levelIndex - 1] = maxScore;
+        if (GameRecord.Instance.maxScore[GameRecord.Instance.currentLevelIndex - 1] < maxScore)
+            GameRecord.Instance.maxScore[GameRecord.Instance.currentLevelIndex - 1] = maxScore;
 
-        if (GameRecord.Instance.specialCoin[GameRecord.Instance.levelIndex - 1] < specialCoin)
-            GameRecord.Instance.specialCoin[GameRecord.Instance.levelIndex - 1] = specialCoin;
+        if (GameRecord.Instance.specialCoin[GameRecord.Instance.currentLevelIndex - 1] < specialCoin)
+            GameRecord.Instance.specialCoin[GameRecord.Instance.currentLevelIndex - 1] = specialCoin;
 
-        if (GameRecord.Instance.levelIndex == GameRecord.Instance.beingPassedLevel)
+        if (GameRecord.Instance.currentLevelIndex == GameRecord.Instance.beingPassedLevel)
             GameRecord.Instance.beingPassedLevel++;
        
-        GameRecord.Instance.levelIndex++;
+        GameRecord.Instance.currentLevelIndex++;
 
         GameRecord.Instance.Save(GameRoot.GameRecordJsonSavePath);
     }

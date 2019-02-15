@@ -31,7 +31,7 @@ public class PlayerInfo : ScriptableObject
 
     private void OnEnable()
     {
-        playerInfoJsonPath = Application.persistentDataPath + "/Json/json_PlayerInfo_" + playerName + ".json";
+        playerInfoJsonPath = Application.persistentDataPath + "/json_PlayerInfo_" + playerName + ".json";
 
         if (System.IO.File.Exists(playerInfoJsonPath))
         {

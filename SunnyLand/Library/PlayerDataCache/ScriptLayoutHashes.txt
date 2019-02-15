@@ -4,6 +4,7 @@ Assets/Scene/0_Scene_Start.unity
 Assets/Scene/1_Scene_SelectLevel.unity
 Assets/Scene/2_Scene_Level_1-1.unity
 Assets/Scene/3_Scene_Level_1-2.unity
+Assets/Scene/4_Scene_Level_1-3.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 dbc29a6f2739d277c10da432d73adb6d UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -19,7 +20,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 82096edb2abcc82fd97d4bc88c504629 Assembly-CSharp.dll:.StorePanel
 a43f816afa938842c7a114cc4e513ba6 Assembly-CSharp.dll:.EndingPanel
-bd9fca4b9ecee1808f522d6133f24b34 Assembly-CSharp.dll:.GameRecord
+282b373129e641697214c47ad08091c5 Assembly-CSharp.dll:.GameRecord
 a43f816afa938842c7a114cc4e513ba6 Assembly-CSharp.dll:.LevelSelectPanel
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
