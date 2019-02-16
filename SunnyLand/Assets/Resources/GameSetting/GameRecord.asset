@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: GameRecord
   m_EditorClassIdentifier: 
   beingPassedLevel: 1
-  levelIndex: 1
-  money: 0
+  currentLevelIndex: 1
+  money: 2000
   killMonster: 0
   getCoin: 0
   specialCoin: 000000000000000000000000000000000000000000000000
