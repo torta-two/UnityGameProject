@@ -17,7 +17,7 @@ public class BalancePanel : BasePanel
         score = transform.Find("ScorePanel/Score").GetComponent<Text>();
         reward = transform.Find("RewardPanel/Reward").GetComponent<Text>();
         money = transform.Find("MoneyPanel/Money").GetComponent<Text>();
-        money.text = GameRecord.Instance.money.ToString();
+        money.text = 0.ToString();
 
         for (int i = 0; i < star.Length; i++)
         {
@@ -51,7 +51,7 @@ public class BalancePanel : BasePanel
             StartCoroutine(MoneyAnim(score / 10));
         }
 
-        StopCoroutine(ScoreAnim(score, text));
+        StopCoroutine(ScoreAnim(score, text, isStartMoneyAnim));
     }
 
     private IEnumerator MoneyAnim(int addMoney)
